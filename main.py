@@ -94,9 +94,8 @@ def login():
             # Redirect to home page
             # return 'Logged in successfully!'
             return redirect(url_for('index'))
-        else:
-            # Account doesnt exist or email/password incorrect
-            msg = 'Incorrect email/password!'
+        # Account doesnt exist or email/password incorrect
+        msg = 'Incorrect email/password!'
 
 # ----------------------------------Admin Login------------------------------------
 
@@ -118,9 +117,8 @@ def login():
             # Redirect to home page
             # return 'Logged in successfully!'
             return redirect(url_for('admin_dashboard'))
-        else:
-            # Account doesnt exist or email/password incorrect
-            msg = 'Incorrect email/password!'
+        # Account doesnt exist or email/password incorrect
+        msg = 'Incorrect email/password!'
 
 # --------------------------Super Admin Login-------------------------------------
         if request.method == 'POST' and 'email' in request.form and 'password' in request.form:
@@ -134,8 +132,7 @@ def login():
                 session['loggedin'] = True
                 session['email'] = account['email']
                 return redirect(url_for('super_admin_dashboard'))
-            else:
-                msg = 'Incorrect email/password!'
+            msg = 'Incorrect email/password!'
 
 # -------------middle_ware login-------------------
 
@@ -157,9 +154,8 @@ def login():
                 # Redirect to home page
                 # return 'Logged in successfully!'
                 return redirect(url_for('middle_ware'))
-            else:
-                # Account doesnt exist or email/password incorrect
-                msg = 'Incorrect email/password!'
+            # Account doesnt exist or email/password incorrect
+            msg = 'Incorrect email/password!'
 
     return render_template('login.html', msg=msg)
 
@@ -230,7 +226,7 @@ def verify():
     if otp == int(user_otp):
         msgg = 'You have successfully registered!'
         return render_template('login.html', msgg=msgg)
-    elif request.method == 'POST':
+    if request.method == 'POST':
         msgg = 'OTP does not match'
         return render_template('verify.html', msgg=msgg)
 
@@ -262,9 +258,8 @@ def forget_password1():
             # Redirect to home page
             # return 'Logged in successfully!'
             return redirect(url_for('forget_password2'))
-        else:
-            # Account doesnt exist or email/password incorrect
-            msg = 'Incorrect email/name!'
+        # Account doesnt exist or email/password incorrect
+        msg = 'Incorrect email/name!'
     return render_template('forget_password1.html', msg=msg)
 
 
@@ -544,24 +539,23 @@ def index():
         if total_app['no_of_rows'] == sl['total_slot']:
             msg = 'All slots are booked'
             return render_template('index.html', msg=msg,profile=profile,total=total,sl=sl)
-        else:
 
-            cursor.execute("INSERT INTO online_appointment(mobile,email,gender,date,name,address,age,problem) VALUES(%s,%s,%s,%s,%s,%s,%s,%s)",
-                           (mobile, email, gender, date, name, address, age, problem))
+        cursor.execute("INSERT INTO online_appointment(mobile,email,gender,date,name,address,age,problem) VALUES(%s,%s,%s,%s,%s,%s,%s,%s)",
+                       (mobile, email, gender, date, name, address, age, problem))
 
-            conn.commit()
-            cursor.close()
-            mail.send_message('New Appointment Booking' + email,
-                              sender=email,
-                              recipients=[params['gmail-user']],
-                              body=name + "\n" + email
-                              )
-            ms = Message('Heal Plus', sender='username@gmail.com',
-                         recipients=[email])
-            ms.body = str('Dear \n' + name + '\n'+'Your Appointment Was Booked Successfully On Date ' + date + '  in between 9Am to 3pm. \n'
-                          + 'Important Notice \n'+'Please Bring Your Original Id Card At The Time Of Consultation.\n\n Thank You\nTeam Heal Plus')
-            mail.send(ms)
-            return redirect('index_view_appointment')
+        conn.commit()
+        cursor.close()
+        mail.send_message('New Appointment Booking' + email,
+                          sender=email,
+                          recipients=[params['gmail-user']],
+                          body=name + "\n" + email
+                          )
+        ms = Message('Heal Plus', sender='username@gmail.com',
+                     recipients=[email])
+        ms.body = str('Dear \n' + name + '\n'+'Your Appointment Was Booked Successfully On Date ' + date + '  in between 9Am to 3pm. \n'
+                      + 'Important Notice \n'+'Please Bring Your Original Id Card At The Time Of Consultation.\n\n Thank You\nTeam Heal Plus')
+        mail.send(ms)
+        return redirect('index_view_appointment')
     return render_template("index.html", profile=profile, total=total,sl=sl,slider=slider)
 
 # ---------------------------End-----------------------------------
@@ -585,17 +579,8 @@ def index_view_appointment():
         account = cursor.fetchall()
         if account:
             return render_template('index_list_appointment.html', account=account, profile=profile)
-        # # If account exists in accounts table in out database
-        # if account:
-        #     # Create session data, we can access this data in other routes
-        #     session['loggedin'] = True
-        #     session['mobile'] = account['mobile']
-        #     # Redirect to home page
-        #     # return 'Logged in successfully!'
-        #     return render_template('index_list_appointment.html', account=account)
-        else:
-            # Account doesnt exist or username/password incorrect
-            msg = 'Incorrect username/password!'
+        # Account doesnt exist or username/password incorrect
+        msg = 'Incorrect username/password!'
 
     return render_template('index_view_appointment.html', msg=msg, profile=profile)
 
@@ -781,9 +766,8 @@ def viewbills():
             # Redirect to home page
             # return 'Logged in successfully!'
             return redirect('list_bill')
-        else:
-            # Account doesnt exist or username/password incorrect
-            msg = 'Incorrect username/password!'
+        # Account doesnt exist or username/password incorrect
+        msg = 'Incorrect username/password!'
 
     return render_template('viewbills.html', msg=msg)
 
@@ -1144,10 +1128,9 @@ def add_product_to_cart():
                 session['all_total_quantity'] = all_total_quantity
                 session['all_total_price'] = all_total_price
                 return redirect(url_for('.products'))
-            else:
-                cursor.execute("SELECT * FROM product")
-                rows = cursor.fetchall()
-                return render_template('addtocart.html', products=rows, status='stock_error')
+            cursor.execute("SELECT * FROM product")
+            rows = cursor.fetchall()
+            return render_template('addtocart.html', products=rows, status='stock_error')
     except Exception as e:
         print(e)
     # finally:
@@ -1213,9 +1196,9 @@ def delete_product(code):
 def array_merge(first_array, second_array):
     if isinstance(first_array, list) and isinstance(second_array, list):
         return first_array + second_array
-    elif isinstance(first_array, dict) and isinstance(second_array, dict):
+    if isinstance(first_array, dict) and isinstance(second_array, dict):
         return dict(list(first_array.items()) + list(second_array.items()))
-    elif isinstance(first_array, set) and isinstance(second_array, set):
+    if isinstance(first_array, set) and isinstance(second_array, set):
         return first_array.union(second_array)
     return False
 
@@ -1231,8 +1214,7 @@ def search():
         rows = cursor.fetchall()
         if not rows:
             return redirect(url_for('.products'))
-        else:
-            return render_template('addtocart.html', products=rows)
+        return render_template('addtocart.html', products=rows)
     except Exception as e:
         print(e)
     finally:
