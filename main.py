@@ -775,7 +775,6 @@ def viewbills():
         if account:
             # Create session data, we can access this data in other routes
             session['loggedin'] = True
-            # session['name'] = account['name']
             session['mobile'] = account['mobile']
 
             # Redirect to home page
@@ -811,7 +810,6 @@ def bill_invoice(id):
     cursor = conn.cursor(pymysql.cursors.DictCursor)
     cursor.execute(
         "SELECT name,mobile,email,date,p_name,p_id,quantity,price_unit,with_gst,total_price FROM billing WHERE id=%s", (id,))
-    # result=cursor.execute("SELECT  * FROM sales WHERE id=%s",(id,) )
     employee = cursor.fetchall()
     cursor.close()
     res = render_template('bill_invoice.html', employee=employee)
