@@ -60,7 +60,7 @@ def pl_home():
     total = cursor.fetchone()
     cursor.execute("SELECT total_slot FROM slots")
     sl = cursor.fetchone()
-    
+
 
     return render_template("pl_home.html", total=total, sl=sl, slider=slider)
 
@@ -359,7 +359,7 @@ def admin_dashboard():
             "UPDATE doctors SET status = %s WHERE id= %s", (status, id))
         conn.commit()
         return redirect('admin_dashboard')
-    
+
     return render_template("admin_dashboard.html", admin=admin, pd=pd, doc=doc, av=av, td=td, da=da, 
     tp=tp,emp=emp,sl=sl,total=total,emp_avl=emp_avl,slider=slider,med=med)
 
@@ -421,7 +421,7 @@ def slider():
     conn = mysql.connect()
     cursor = conn.cursor(pymysql.cursors.DictCursor)
     if request.method == 'POST':
-            
+
             content_sl1 = request.form['content_sl1']
             content_sl2 = request.form['content_sl2']
             content_sl3 = request.form['content_sl3']
@@ -432,9 +432,9 @@ def slider():
             conn.commit()
             return redirect('admin_dashboard')
 
-            
+
     if request.method == 'POST':
-    
+
             sl1 = request.files.getlist('sl1[]')
             # print(files)
             for files in sl1 :
@@ -447,7 +447,7 @@ def slider():
                 return redirect('admin_dashboard')
     if request.method == 'POST':
             sl2 = request.files.getlist('sl2[]')
-            
+
             # print(files)
             for files in sl2 :
                 if files and allowed_file(files.filename):
@@ -458,7 +458,7 @@ def slider():
                     conn.commit()
                 return redirect('admin_dashboard')
     if request.method == 'POST':
-            
+
             sl3 = request.files.getlist('sl3[]')
 
             # print(files)
@@ -471,7 +471,7 @@ def slider():
                     conn.commit()
                 return redirect('admin_dashboard')
     if request.method == 'POST':
-           
+
             sl4 = request.files.getlist('sl4[]')
 
             # print(files)
@@ -534,7 +534,7 @@ def index():
         age = request.form['age']
         problem = request.form['problem']
 
-        
+
         cursor.execute(
             "SELECT date AS Date, COUNT(id ) AS no_of_rows FROM online_appointment WHERE date(date)= CURDATE() ")
         total_app = cursor.fetchone()
@@ -689,9 +689,9 @@ def add_employees():
             designation = request.form['designation']
             department = request.form['department']
             status = request.form['status']
-            
+
             cursor.execute("INSERT INTO employee(e_id,name,email,address,gender,phone,dob,bloodgroup,age,designation,department,status) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(e_id,name,email,address,gender,phone,dob,bloodgroup,age,designation,department,status))
-            
+
             if request.method == 'POST':
                 photo = request.files.getlist('photo[]')
             # print(files)
@@ -703,7 +703,7 @@ def add_employees():
                         cursor.fetchone()
             conn.commit()
             cursor.close()
-        
+
             return redirect('admin_dashboard')
     return render_template("add_employees.html")        
 
@@ -718,7 +718,7 @@ def delete_employee(id):
     conn.commit()
     msg = 'Employee Removed Successfully'
     return redirect(url_for('admin_dashboard'))
-                                                       
+
 
 # -----------------------middle_ware_route----------------------
 
@@ -827,7 +827,7 @@ def attendance():
     conn = mysql.connect()
     cursor = conn.cursor(pymysql.cursors.DictCursor)
     msg=''
-    
+
 
     if request.method == 'POST':
         name = request.form['name']
@@ -852,7 +852,7 @@ def attendance_edit(id):
     at = cursor.fetchall()
 
     if request.method == 'POST':
-        
+
         outtime = request.form['outtime']
         earlyleaving = request.form['earlyleaving']
         overtime = request.form['overtime']
