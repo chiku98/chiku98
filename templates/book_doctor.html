@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Health care</title>
+    
+    <link rel="stylesheet" href="{{url_for('static',filename='css/appointment.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/nav.css')}}">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+
+   </head>
+<body style="font-size: larger;">
+
+
+    <header class="header" >
+
+        <!-- <a href="#" class="logo" > <i class="fas fa-heartbeat" style='color:red;' ></i> healthcare. </a> -->
+      
+        <nav class="navbar">
+            <a href="{{url_for('about')}}" style="font-size: larger;color: blue;">Back</a>
+        </nav>
+      
+        <div id="menu-btn" class="fas fa-bars"></div>
+      
+      </header>
+
+  <div class="wrapper" style="margin-top: 80px;margin-bottom: 70px;">
+    <h2>Book Your Appointment</h2>
+    <div style="color: blue;">{{msg}}</div>
+    <center>
+    <form action="" method="post">
+      <div class="fields-grid">
+        <div class="styled-input">
+          <div class="styled-input">
+            <div class="styled-input">
+
+              <div class="appointment-form-field">
+    
+                <input type="text"  name="date" id="currentDate" required=""  placeholder="Enter date" style="width: 80%;height:40px;border: 2px solid blue;border-radius: 10px;font-size: large;color: black;font-weight: 500;" readonly>
+                  
+              </div>
+            </div><br>
+
+            <script>
+                var today = new Date();
+                var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+                document.getElementById("currentDate").value = date;
+              </script>
+
+            {% for row in dc %}
+            <div class="appointment-form-field">
+  
+              <input type="text"  name="doctor_name" required="" value="{{row.name}}"  style="width: 80%;height:40px;border: 2px solid blue;border-radius: 10px;font-size: large;color: black;font-weight: 500;" readonly>
+                
+            </div>
+          </div><br>
+
+          <div class="styled-input">
+
+            <div class="appointment-form-field">
+  
+              <input type="text" name="doctor_department" required="" value="{{row.department}}"  style="width: 80%;height:40px;border: 2px solid blue;border-radius: 10px;font-size: large;color: black;font-weight: 500;" readonly>
+                
+            </div>
+          </div><br>
+            {% endfor %}
+          <div class="appointment-form-field">
+    
+            <input type="text"  name="patient_name" required="" placeholder="Enter Your Name" style="width: 80%;height:40px;border: 2px solid blue;border-radius: 10px;font-size: large;">
+              
+          
+          </div><br>
+
+        
+
+          
+
+          <div class="styled-input">
+
+            <div class="appointment-form-field">
+   
+              <input type="number"  name="patient_age" required="" placeholder="Enter Your age" style="width: 80%;height:40px;border: 2px solid blue;border-radius: 10px;font-size: large;">
+                
+          </div><br>  
+
+          <div class="styled-input">
+
+            <div class="appointment-form-field">
+  
+              <input type="text"  name="patient_bloodgroup" required="" placeholder="Enter Your Bloodgroup" style="width: 80%;height:40px;border: 2px solid blue;border-radius: 10px;font-size: large;">
+                
+          </div><br>  
+          <div class="appointment-form-field">
+
+            <select  name="patient_gender" required=""  style="width: 80%;height:40px;border: 2px solid blue;border-radius: 10px;font-size: large;">
+              <option >Select Gender*</option>
+              <option >Male</option>
+              <option >Female</option>
+              <option>Others</option>
+            </select>
+        </div><br>
+        <div class="styled-input">
+
+            <div class="appointment-form-field">
+  
+              <input type="number"  name="patient_mobile" required="" placeholder="Enter Your Mobile Number" style="width: 80%;height:40px;border: 2px solid blue;border-radius: 10px;font-size: large;">
+                
+          </div><br>  
+
+          <div class="styled-input">
+
+            <div class="appointment-form-field">
+  
+              <input type="email"  name="patient_email" required="" placeholder="Enter Your Email Id" style="width: 80%;height:40px;border: 2px solid blue;border-radius: 10px;font-size: large;">
+                
+          </div><br>  
+
+          <div class="appointment-form-field">
+            <div class="styled-input">
+
+                <div class="appointment-form-field">
+      
+                  <input type="text"  name="patient_address" required="" placeholder="Enter Your Address" style="width: 80%;height:40px;border: 2px solid blue;border-radius: 10px;font-size: large;">
+                    
+              </div><br>  
+              <div class="appointment-form-field">
+      
+    
+      <div class="appointment-btn text-lg-right">
+        <button type="submit" style="background-color: blue;color: white;" class="btn btn-style btn-primary mt-4">Book Appointment</button>
+      </div>
+    </form>
+  </center>
+  </div>
+
+<script src="{{url_for('static',filename='js/nav.js')}}"></script>
+
+<script>
+  $(document).ready(function(){
+   // File type validation
+      $("#fileInput").change(function(){
+          var fileLength = this.files.length;
+          var match= ["image/jpeg","image/png","image/jpg","image/gif"];
+          var i;
+          for(i = 0; i < fileLength; i++){
+              var file = this.files[i];
+              var imagefile = file.type;
+              if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2]) || (imagefile==match[3]))){
+                  alert('Please select a valid image file (JPEG/JPG/PNG/GIF).');
+                  $("#fileInput").val('');
+                  return false;
+              }
+          }
+      });
+  });
+  </script>
+
+</body>
+</html>

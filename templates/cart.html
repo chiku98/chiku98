@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Cart</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<link href="{{ url_for('static', filename='css/pharma.css') }}" rel="stylesheet" type="text/css" />
+
+		<style type="text/css">
+			@media screen {
+				
+			.navbar {
+				width: 100%;
+				height: 70px;
+				top: 0;
+				position: fixed;
+				background: blue;
+				display: flex;
+				justify-content: space-between;
+			}
+			ul {
+				text-align: left;
+				display: flex;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				padding: relative;
+			}
+			ul li {
+				font: bold 12px/18px sans-serif;
+				display: inline-block;
+				position: relative;
+				padding: 25px 20px;
+				background: blue;
+			}
+			ul li a {
+				text-decoration: none;
+				padding: 25px 20px;
+				color: white;
+				font-size: 18px;
+			}
+			.search_bar{
+				height: 30px;
+				width: 12%;
+				border-radius: 20px;
+				float: right;
+				margin-top: 20px;
+				margin-right: 30px;
+				border: none;
+			}
+			ul li:hover {
+				background: #26527F;
+				color: white;
+			}
+
+			form.example input[type="text"] {
+				font-size: 17px;
+				border: 1px solid grey;
+				float: left;
+				width: 200px;
+				height: 30px;
+				margin-left: 40%;
+				background: #f1f1f1;
+			}
+
+			form.example button {
+				float: left;
+				width: 40px;
+				height: 30px;
+				background: #154c79;
+				color: white;
+				font-size: 17px;
+				border: 1px solid grey;
+				border-left: none;
+				cursor: pointer;
+				margin-top:2px;
+				margin-left:2px;
+			}
+
+			form.example button:hover {
+				background: #26527F;
+			}
+			form.example::after {
+				content: "";
+				clear: both;
+				display: table;
+			}
+			.card{
+				margin:40px 28px;
+				display: flex;
+				margin-top: 80px;
+			}
+			.product-grid{
+				width: 100%;
+			}
+			}
+			
+		</style>
+	</head>
+	<body style="margin-top: 50px;">
+		{% if status is defined and status =='pin_error' %}
+		<script type="text/javascript">
+			alert("Invalid pin. Please try again.");
+		</script>
+		{% elif status is defined and status =='success' %}
+		<script type="text/javascript">
+			alert("Transaction successfull!");
+			window.location = "/";
+		</script>
+		{% elif status is defined and status =='balance_error' %}
+		<script type="text/javascript">
+			alert("Insufficient balance.");
+		</script>
+		{% endif %}
+
+		<div class="navbar">
+			<ul>
+				<li><a href="{{('addtocart')}}"> HOME</a></li>
+				<!-- <li><a class="fa fa-shopping-cart" style="font-size:10px" href="view_cart">{{session['cart_item'] |length}}</a></li> -->
+				<li><span class="fa fa-shopping-cart" style="color: whitesmoke;font-size: x-large;margin-top: -25px;">{{session['cart_item'] |length}} <a style="margin-left: -26px;" href="view_cart"></a></span><br></li>
+				
+			</ul>
+			<span class="las la-search" style="color: rgb(255, 255, 255);font-weight: bolder;"></span>
+			<input type="search" id="myInput" placeholder="Search Here" class="search_bar">
+
+		</div>
+
+
+		<div id="shopping-cart">
+			<div class="txt-heading">Shopping Cart</div>
+			{% if 'cart_item' in session %}
+			<a id="btnEmpty" href="{{ url_for('.empty_cart') }}">Empty Cart</a>
+			<table class="tbl-cart" cellpadding="10" cellspacing="1">
+				<tbody>
+					<tr>
+						<th style="text-align: left;">Name</th>
+						<th style="text-align: left;">Code</th>
+						<th style="text-align: right;" width="5%">Quantity</th>
+						<th style="text-align: right;" width="10%">Unit Price</th>
+						<th style="text-align: right;" width="10%">Price</th>
+						<th style="text-align: center;" width="5%">Remove</th>
+					</tr>
+					{% for key, val in session['cart_item'].items() %} {% set quantity = session['cart_item'][key]['quantity'] %} {% set price = session['cart_item'][key]['price'] %} {% set item_price
+					= session['cart_item'][key]['total_price'] %}
+					<tr>
+						<td><img src="/static/uploads/{{ session['cart_item'][key]['image'] }}" class="cart-item-image" />{{ session['cart_item'][key]['name'] }}</td>
+						<td>{{ session['cart_item'][key]['code'] }}</td>
+						<td style="text-align: right;">
+							<form action="/addincart" method="post">
+								<input type="number"  name="quantity" class="cartq" value="{{quantity}}" >
+								<button type="submit">ADD</button>
+							</form>
+							
+						<td style="text-align: right;">₹ {{ price }}</td>
+						<td style="text-align: right;">₹ {{quantity* price }}</td>
+						<td style="text-align: center;">
+							<a href="{{ url_for('.delete_product', code=session['cart_item'][key]['code']) }}" class="btnRemoveAction">
+								<span><i class="fa fa-trash" style="font-size: larger;font-weight: 800;color: blue;"></i></span>
+							</a>
+						</td>
+					</tr>
+					{% endfor %}
+					<tr>
+						<td colspan="2" align="right">Total:</td>
+						<td align="right">{{ session['all_total_quantity'] }}</td>
+						<td align="right" colspan="2"><strong>₹ {{ session['all_total_price'] }}</strong></td>
+						{% if session['email'] %}
+						<td><a id="btnEmpty" onclick="buy()">Buy</a></td>
+						{% endif %}
+					</tr>
+				</tbody>
+			</table>
+			{% else: %}
+			<div class="no-records">Your Cart is Empty</div>
+			{% endif %}
+			<div style="display: none;">
+				<form action="transaction" method="POST" id="formm">
+					<input type="hidden" id="pin" name="pin" />
+				</form>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		function buy() {
+			var pin = Number(prompt("Enter PIN:"));
+			document.getElementById("pin").value = pin;
+			document.getElementById("formm").submit();
+		}
+	</script>
+</html>

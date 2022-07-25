@@ -1,0 +1,2527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <title>Admin</title>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/admin_dashboard.css')}}">
+
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style-starter.css')}}">
+
+    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+
+
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+
+    
+    
+    <style>
+        li:hover{
+    background-color: whitesmoke;
+    color: blue;
+    transition: transform .2s; 
+    transform: scale(1.1);
+  }
+.modal-open {
+  overflow: hidden;
+}
+
+.modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: 0;
+}
+
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 0.5rem;
+  pointer-events: none;
+}
+
+.modal.fade .modal-dialog {
+  transition: transform 0.3s ease-out;
+  transform: translate(0, -50px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal.fade .modal-dialog {
+    transition: none;
+  }
+}
+
+.modal.show .modal-dialog {
+  transform: none;
+}
+
+.modal.modal-static .modal-dialog {
+  transform: scale(1.02);
+}
+
+.modal-dialog-scrollable {
+  display: flex;
+  max-height: calc(100% - 1rem);
+}
+
+.modal-dialog-scrollable .modal-content {
+  max-height: calc(100vh - 1rem);
+  overflow: hidden;
+}
+
+.modal-dialog-scrollable .modal-header,
+.modal-dialog-scrollable .modal-footer {
+  flex-shrink: 0;
+}
+
+.modal-dialog-scrollable .modal-body {
+  overflow-y: auto;
+}
+
+.modal-dialog-centered {
+  display: flex;
+  align-items: center;
+  min-height: calc(100% - 1rem);
+}
+
+.modal-dialog-centered::before {
+  display: block;
+  height: calc(100vh - 1rem);
+  content: "";
+}
+
+.modal-dialog-centered.modal-dialog-scrollable {
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.modal-dialog-centered.modal-dialog-scrollable .modal-content {
+  max-height: none;
+}
+
+.modal-dialog-centered.modal-dialog-scrollable::before {
+  content: none;
+}
+
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.3rem;
+  outline: 0;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+}
+
+.modal-backdrop.fade {
+  opacity: 0;
+}
+
+.modal-backdrop.show {
+  opacity: 0.5;
+}
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+  border-bottom: 1px solid #dee2e6;
+  border-top-left-radius: calc(0.3rem - 1px);
+  border-top-right-radius: calc(0.3rem - 1px);
+}
+
+.modal-header .close {
+  padding: 1rem 1rem;
+  margin: -1rem -1rem -1rem auto;
+}
+
+.modal-title {
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+.modal-body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: 1rem;
+}
+
+.modal-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0.75rem;
+  border-top: 1px solid #dee2e6;
+  border-bottom-right-radius: calc(0.3rem - 1px);
+  border-bottom-left-radius: calc(0.3rem - 1px);
+}
+
+.modal-footer>* {
+  margin: 0.25rem;
+}
+
+.modal-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+  overflow: scroll;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 500px;
+    margin: 1.75rem auto;
+  }
+
+  .modal-dialog-scrollable {
+    max-height: calc(100% - 3.5rem);
+  }
+
+  .modal-dialog-scrollable .modal-content {
+    max-height: calc(100vh - 3.5rem);
+  }
+
+  .modal-dialog-centered {
+    min-height: calc(100% - 3.5rem);
+  }
+
+  .modal-dialog-centered::before {
+    height: calc(100vh - 3.5rem);
+  }
+
+  .modal-sm {
+    max-width: 300px;
+  }
+}
+
+@media (min-width: 992px) {
+
+  .modal-lg,
+  .modal-xl {
+    max-width: 800px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .modal-xl {
+    max-width: 1140px;
+  }
+}
+
+
+
+
+  
+  
+
+  
+
+
+
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+}
+
+:root {
+  --para-color: #555;
+  --heading-color: #232323;
+  --bg-border: #ddd;
+  --primary-color: #3a0ca3;
+  --secondary-color: #f72585;
+  --nav-color: #fff;
+  --bg-light: #f8f8f8;
+  --bg-white: #fff;
+  --bg-white-1: #fff;
+  --bg-white-3: #fff;
+  --gun-color: #fff;
+  --gun-color-1: #2d2d2d;
+  --border-radius: 8px;
+  --bg-color: #fff;
+  --footer-para: #afafaf;
+  --footer-bg: #2d2d2d;
+  --breadcrumb-bg: #e9e9e9;
+}
+
+[data-theme="dark"] {
+  --para-color: #afafaf;
+  --footer-para: #afafaf;
+  --heading-color: #fff;
+  --primary-color: #652aef;
+  --bg-light:#16191d;
+  --bg-white: #2d2d2d;
+  --bg-white-1: rgba(45, 45, 45, 0.51);
+  --border-radius: 8px;
+  --bg-color:#101215;
+  --gun-color: #fff;
+  --gun-color-1: rgb(44, 39, 39);
+  --bg-white-3: #fff;
+  --footer-bg: #131617;
+  --bg-border: #444;
+  --breadcrumb-bg: #333;
+  --nav-color: #fff;
+}
+
+.noscroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  color: var(--para-color);
+  background-color: var(--bg-color);
+  font-family: 'Nunito', sans-serif;
+}
+
+body img {
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -o-border-radius: 8px;
+  -moz-border-radius: 8px;
+}
+
+body a,
+button,
+.btn {
+  cursor: pointer !important;
+  font-family: 'Nunito', sans-serif;
+}
+
+.clear {
+  clear: both;
+}
+
+.img-responsive {
+  max-width: 100%;
+  display: block;
+}
+
+.d-grid {
+  display: grid;
+}
+
+.align-self {
+  align-self: center;
+}
+
+button,
+input,
+select,
+label,
+li {
+  -webkit-appearance: none;
+  outline: none;
+  font-family: 'Nunito', sans-serif;
+}
+
+body a,
+button,
+.btn {
+  cursor: pointer !important;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+}
+
+iframe {
+  border: none;
+  display: block;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+  color: var(--heading-color);
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--para-color);
+  font-family: 'Nunito', sans-serif;
+}
+
+li {
+  list-style-type: none;
+}
+
+p.white {
+  color: #eee;
+}
+
+.align-center {
+  align-self: center;
+}
+
+.noscroll {
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.radius-image {
+  border-radius: 8px;
+}
+
+/* /-- container --/ */
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 100%;
+    padding-right: 30px;
+    padding-left: 30px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 100%;
+    padding-right: 25px;
+    padding-left: 25px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+
+/* /-- //container --/ */
+h4.section-title-left {
+  font-weight: bold;
+  font-size: 2em;
+  margin-bottom: 1em;
+  padding-bottom: 0.6em;
+  position: relative;
+  text-transform: capitalize;
+}
+
+.section-title-left::before {
+  background-color: var(--heading-color);
+  bottom: 0;
+  content: "";
+  height: 2px;
+  left: 0;
+  position: absolute;
+  width: 80px;
+  box-sizing: border-box;
+}
+
+.btn-style {
+  padding: 12px 36px;
+  font-size: 18px;
+  line-height: 28px;
+  text-transform: capitalize;
+  font-weight: 600;
+  transition: 0.3s ease-in;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+}
+
+.btn-white {
+  padding: 12px 36px;
+  font-size: 18px;
+  line-height: 28px;
+  text-transform: capitalize;
+  font-weight: 700;
+  transition: 0.3s ease-in;
+  border: 1px solid #fff;
+  background-color: #fff;
+  color: var(--primary-color);
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+}
+
+.btn-white:hover {
+  border: 1px solid var(--primary-color);
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.border-btn {
+  padding: 12px 36px;
+  font-size: 18px;
+  line-height: 28px;
+  text-transform: capitalize;
+  font-weight: 700;
+  transition: 0.3s ease-in;
+  border: 1px solid rgba(255, 255, 255, 1);
+  background-color: rgba(49, 49, 49, 0);
+  color: var(--nav-color);
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+}
+
+.border-btn:hover {
+  border: 1px solid #fff;
+  background-color: #fff;
+  color: var(--primary-color);
+}
+
+.header-section p {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.header-section p {
+  color: var(--para-color);
+  font-size: 18px;
+  line-height: 26.5px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+}
+
+h3.hny-title,
+h3.hny-title.two {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 42px;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+}
+
+h3.hny-title.two {
+  color: #fff;
+}
+
+.sub-titlehny {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--secondary-color);
+  text-transform: capitalize;
+}
+
+.separatorhny {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  border-bottom: 2px solid var(--primary-color);
+  margin: 6px 0 24px 0;
+  width: 63px;
+}
+
+@media (max-width: 1080px) {
+
+  h3.hny-title,
+  h3.hny-title.two {
+    font-size: 30px;
+    line-height: 35px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  h3.hny-title,
+  h3.hny-title.two {
+    font-size: 28px;
+    line-height: 35px;
+    margin-bottom: 10px;
+  }
+
+  .sub-titlehny {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  .header-section p {
+    font-size: 16px;
+    line-height: 25.5px;
+  }
+}
+
+@media (max-width: 736px) {
+  .header-section p {
+    font-size: 15px;
+    line-height: 25.5px;
+  }
+}
+
+@media (max-width: 568px) {
+
+  .sub-titlehny {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  .btn-white,
+  .border-btn,
+  .btn-style {
+    padding: 10px 26px;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 26px;
+  }
+
+  h3.hny-title,
+  h3.hny-title.two {
+    font-size: 26px;
+    line-height: 34px;
+    margin-bottom: 10px;
+  }
+}
+
+/* /-- toggle switch --/ */
+nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.theme-switch-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.theme-switch-wrapper em {
+  margin-left: 10px;
+  font-size: 1rem;
+}
+
+.theme-switch {
+  display: inline-block;
+  position: relative;
+  width: 35px;
+  margin: 0;
+}
+
+.theme-switch input {
+  display: none;
+}
+
+/* /-- //toggle switch --/ */
+/* /-- dark and light mode styling --/ */
+.mode-container {
+  width: 24px;
+  height: 24px;
+  margin-left: 10px;
+}
+
+.gg-sun {
+  position: relative;
+  transform: scale(var(--ggs, 1));
+  height: 24px;
+  background: linear-gradient(180deg, currentColor 4px, transparent 0) no-repeat 5px -6px/2px 6px, linear-gradient(180deg, currentColor 4px, transparent 0) no-repeat 5px 14px/2px 6px, linear-gradient(180deg, currentColor 4px, transparent 0) no-repeat -8px 5px/6px 2px, linear-gradient(180deg, currentColor 4px, transparent 0) no-repeat 14px 5px/6px 2px;
+  border-radius: 100px;
+  box-shadow: inset 0 0 0 2px;
+  border: 6px solid transparent;
+}
+
+.gg-moon {
+  overflow: hidden;
+  position: relative;
+  transform: rotate(-135deg) scale(var(--ggs, 1));
+  width: 20px;
+  height: 20px;
+  border: 2px solid;
+  border-bottom: 2px solid transparent;
+}
+
+.gg-moon,
+.gg-moon:after {
+  display: block;
+  box-sizing: border-box;
+  border-radius: 50%;
+}
+
+.gg-moon:after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 18px;
+  border: 2px solid transparent;
+  box-shadow: 0 0 0 2px;
+  top: 8px;
+  left: 2px;
+}
+
+.gg-sun,
+.gg-sun:after,
+.gg-sun:before {
+  box-sizing: border-box;
+  display: block;
+  width: 24px;
+}
+
+.gg-sun:after,
+.gg-sun:before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  border-right: 4px solid;
+  border-left: 4px solid;
+  left: -6px;
+  top: 5px;
+}
+
+.gg-sun:before {
+  transform: rotate(-45deg);
+}
+
+.gg-sun:after {
+  transform: rotate(45deg);
+}
+
+.mode-container i.gg-sun {
+  display: none;
+  color: var(--heading-color);
+}
+
+.mode-container i.gg-moon {
+  display: block;
+  color: var(--heading-color);
+}
+
+input:checked+.mode-container i.gg-sun {
+  display: block;
+}
+
+input:checked+.mode-container i.gg-moon {
+  display: none;
+}
+
+/* /-- //dark and light mode styling --/ */
+.w3l-header button.navbar-toggler .icon-close {
+  display: block;
+}
+
+.w3l-header button.navbar-toggler .icon-expand {
+  display: none;
+}
+
+.w3l-header button.navbar-toggler.collapsed .icon-close {
+  display: none;
+}
+
+.w3l-header button.navbar-toggler.collapsed .icon-expand {
+  display: block;
+}
+
+/* /--/top--/ */
+.w3l-top-header {
+  background: var(--bg-light);
+}
+
+.main-top {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  grid-gap: 20px 20px;
+  align-items: center;
+}
+
+.main-top p {
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+  line-height: 26px;
+  text-transform: capitalize;
+}
+
+.info-icon {
+  text-align: center;
+}
+
+.main-top .info-icon span.fa {
+  font-size: 34px;
+  color: var(--primary-color);
+  text-align: center;
+  margin-top: 2px;
+}
+
+.info-top-gridshny {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 0px 20px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  grid-gap: 0px 10px;
+}
+
+.top-header-right ul li {
+  display: inline-block;
+}
+
+.top-header-right ul li a {
+  margin-right: 10px;
+  color: var(--heading-color);
+  display: inline-block;
+  text-align: center;
+  font-size: 16px;
+  background: transparent;
+  border: 1px solid var(--heading-color);
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.top-header-right ul li a:hover {
+  background: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
+  transition: 0.3s;
+  color: #fff;
+}
+
+/* /--//top--/ */
+
+.w3l-header header {
+  align-items: center;
+  z-index: 99;
+  background: var(--bg-color);
+}
+
+.w3l-header header.active {
+  background: var(--bg-color);
+}
+
+.w3l-header .navbar {
+  padding: 0;
+}
+
+.w3l-header .navbar .navbar-brand {
+  margin: 0;
+  padding: 0;
+  font-size: 36px;
+  font-weight: 700;
+  text-transform: capitalize;
+  color: var(--heading-color);
+}
+
+.w3l-header .navbar .navbar-brand:hover {
+  color: var(--heading-color);
+  opacity: 0.95;
+}
+
+.w3l-header .navbar .navbar-brand span.fa {
+  display: inline-block;
+  font-size: 32px;
+  color: var(--primary-color);
+}
+
+.w3l-header .navbar-expand-lg .navbar-nav .nav-item {
+  padding: 0 6px;
+  transition: all 0.5s ease;
+  position: relative;
+}
+
+.w3l-header .navbar-dark .navbar-nav .show>.nav-link,
+.w3l-header .navbar-dark .navbar-nav .active>.nav-link,
+.w3l-header .navbar-dark .navbar-nav .nav-link.show,
+.w3l-header .navbar-dark .navbar-nav .nav-link.active {
+  color: var(--primary-color);
+}
+
+.w3l-header .navbar-light .navbar-nav .show>.nav-link,
+.w3l-header .navbar-light .navbar-nav .active>.nav-link,
+.w3l-header .navbar-light .navbar-nav .nav-link.show,
+.w3l-header .navbar-light .navbar-nav .nav-link.active {
+  color: var(--primary-color);
+}
+
+.w3l-header .navbar-expand-lg .navbar-nav .nav-link {
+  text-transform: capitalize;
+  transition: all 0.3s ease;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 12px 12px;
+  line-height: 22px;
+  color: var(--heading-color);
+}
+
+.w3l-header .navbar-expand-lg .navbar-nav .free-con {
+  border: 1px solid var(--primary-color);
+  background-color:var(--primary-color);
+  padding: 12px 30px !important;
+  display: inline-block;
+  border-radius: 6px;
+  color:#fff;
+}
+
+.w3l-header .navbar-expand-lg .navbar-nav .free-con:hover {
+  border: 1px solid var(--secondary-color);
+  background-color: var(--secondary-color);
+  transition: 0.3s ease-in;
+  color: #fff;
+}
+
+.w3l-header a.dropdown-item {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--heading-color);
+}
+
+.w3l-header .dropdown-item.active,
+.w3l-header .dropdown-item:active {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.w3l-header .navbar-expand-lg .navbar-nav .dropdown-menu {
+  transform: translateX(-50px);
+  border-radius: 8px;
+  min-width: 13rem;
+  padding: 1rem 0;
+  margin-top: .7em;
+  border: none;
+  background-color: var(--bg-white);
+  border: 1px solid var(--bg-border);
+}
+
+.w3l-header .navbar-expand-lg .navbar-nav .dropdown-menu:before {
+  content: '';
+  width: 14px;
+  height: 14px;
+  background-color: var(--bg-white);
+  display: block;
+  border: 1px solid var(--bg-border);
+  border-right: none;
+  border-bottom: none;
+  transform: translateX(-50%) rotateZ(45deg);
+  position: absolute;
+  top: -7px;
+  left: 49%;
+  z-index: 1001;
+}
+
+.w3l-header .navbar-dark .navbar-nav .show>,
+.w3l-header .navbar-dark .navbar-nav .nav-link.show {
+  color: var(--para-color);
+}
+
+.w3l-header nav ul li {
+  display: inline-block;
+}
+
+.w3l-header nav ul li a,
+.w3l-header nav ul li a:after,
+.w3l-header nav ul li a:before {
+  transition: all .5s;
+}
+
+.w3l-header nav ul li a:hover {
+  color: var(--primary-color);
+  background: none;
+}
+
+.w3l-header .navbar-dark .navbar-nav .nav-link:focus {
+  color: var(--primary-color);
+  background: none;
+}
+
+.w3l-header .navbar-dark .navbar-nav .nav-link:hover,
+.w3l-header .navbar-dark .navbar-nav .nav-link:focus {
+  color: var(--primary-color);
+  background: none;
+}
+
+.w3l-header .dropdown-toggle::after {
+  display: none;
+}
+
+.w3l-header .dropdown-menu {
+  min-width: 12rem;
+  padding: 1rem 0;
+}
+
+.w3l-header .dropdown-item:hover,
+.w3l-header .dropdown-item:focus {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.w3l-header li a.search-search {
+  background: rgb(221 221 221 / 20%);
+  font-size: 16px;
+  line-height: 25px;
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 45px;
+  padding: 0;
+  text-align: center;
+  color: var(--heading-color);
+  display: inline-block;
+  border: none;
+}
+
+.w3l-header li a.search-search:hover {
+  background: var(--primary-color);
+  color: #fff;
+  transition: all 0.5s ease;
+}
+
+.w3l-header ul.navbar-nav.search-right {
+  margin-left: auto;
+  align-items: center;
+  display: inline-grid;
+  grid-template-columns: auto 1fr;
+}
+
+.w3l-header .popup form input[type="search"] {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 25px;
+  color: #000;
+  height: 55px;
+  padding: 15px 20px 12px;
+  width: 100%;
+  border: 1px solid #d6d6d6;
+  border-bottom-left-radius: 6px;
+  border-top-left-radius: 6px;
+  border-right: none;
+}
+
+.w3l-header .popup form button {
+  font-size: 17px;
+  line-height: 28px;
+  text-align: center;
+  color: #F5F9FC;
+  font-weight: 500;
+  border: none;
+  background: var(--primary-color);
+  padding: 0 25px;
+  border-left: none;
+  border-radius: initial;
+  border-bottom-right-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.w3l-header .popup form button:hover {
+  opacity: .8;
+}
+
+.w3l-header .popup form input:focus {
+  outline: none;
+}
+
+.w3l-header .pop-overlay {
+  position: fixed;
+  top: 0px;
+  left: 0;
+  right: 0;
+  transition: opacity 0ms;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 99;
+  background: #000000ba;
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
+  height: 100%;
+  width: 100%;
+}
+
+.w3l-header .pop-overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.w3l-header .popup {
+  position: relative;
+  margin: 0rem auto;
+  padding: 15px;
+  top: 50%;
+  max-width: 600px;
+}
+
+.w3l-header .popup .close {
+  position: absolute;
+  right: 20px;
+  top: -50px;
+  transition: all 200ms;
+  font-size: 30px;
+  text-decoration: none;
+  color: #fff;
+  opacity: 0.7;
+}
+
+.w3l-header .popup .close:hover {
+  opacity: 1;
+}
+
+@media only screen and (max-width: 1440px) {
+  .w3l-header .navbar-expand-lg .navbar-nav .nav-item {
+    padding: 0 4px;
+  }
+
+  .w3l-header .navbar-expand-lg .nav_btn>li {
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width:1280px) {
+  .w3l-header .navbar .navbar-brand img {
+    max-width: 109px;
+  }
+
+  .w3l-header .navbar-expand-lg .btn-gradient {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .w3l-header .navbar-expand-lg .navbar-nav.nav_btn>li {
+    margin-left: 0px;
+  }
+
+  .w3l-header .navbar-expand-lg .navbar-nav.nav_btn a {
+    font-size: 14px;
+    padding: 0px;
+  }
+
+}
+@media only screen and (max-width:1050px) {
+  .w3l-header .navbar-expand-lg .navbar-nav .nav-link {
+      font-size: 16px;
+      padding: 12px 10px;
+  }
+  .w3l-header .navbar-expand-lg .navbar-nav .free-con {
+    padding: 10px 18px !important;
+    font-size: 16px;
+  }
+  .w3l-header .navbar-expand-lg .navbar-nav .nav-item {
+      padding: 0 0px;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .w3l-header nav ul li {
+    margin: 5px 0;
+  }
+  .w3l-header ul.navbar-nav.search-right {
+    margin: auto;
+    display: block;
+  }
+  .w3l-header .mobile-position {
+    position: absolute;
+    right: 50px;
+    top: 7px;
+  }
+
+  .w3l-header .navbar-dark .navbar-nav .nav-link:hover,
+  .w3l-header .navbar-dark .navbar-nav .nav-link:focus {
+    color: var(--primary-color);
+    background-color: transparent;
+  }
+
+  .w3l-header .navbar-dark .navbar-nav .show>.nav-link,
+  .w3l-header .navbar-dark .navbar-nav .active>.nav-link,
+  .w3l-header .navbar-dark .navbar-nav .nav-link.show,
+  .w3l-header .navbar-dark .navbar-nav .nav-link.active {
+    color: var(--primary-color);
+    background-color: transparent;
+  }
+
+  .w3l-header .nav-fixed .navbar-dark .navbar-nav .nav-link:hover,
+  .w3l-header .nav-fixed .navbar-dark .navbar-nav .nav-link:focus {
+    color: var(--primary-color);
+    background-color: transparent;
+  }
+
+  .w3l-header .navbar-toggler {
+    border: 0 none;
+    font-size: 24px;
+  }
+
+  .w3l-header .navbar-nav {
+    -webkit-animation-name: none;
+    animation-name: none;
+    float: left;
+    text-align: center;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .w3l-header .navbar-nav:last-child {
+    border: 0;
+  }
+
+  .w3l-header .navbar-expand-lg .navbar-nav .nav-item {
+    -webkit-animation-name: none;
+    animation-name: none;
+    padding: 0;
+  }
+
+  .w3l-header .navbar-expand-lg .navbar-nav.nav_btn>li {
+    padding-bottom: 10px;
+  }
+
+  .w3l-header .navbar-nav .dropdown-menu {
+    text-align: center;
+  }
+
+  .w3l-header .navbar-nav .dropdown-menu .dropdown-menu {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  .w3l-header .navbar-expand-lg .navbar-nav .nav-item .nav-link.active::before {
+    bottom: 0;
+  }
+
+  .w3l-header .navbar-expand-lg .navbar-nav .nav-link {
+    display: inline-block;
+    padding: 6px 0;
+    text-align: center;
+  }
+
+  .w3l-top-header {
+        display: none;
+  }
+
+  .w3l-header .navbar-expand-lg .navbar-nav .dropdown-menu {
+    transform: translateX(0px);
+  }
+
+  .w3l-header header.nav-fixed {
+    height: auto;
+    padding: 8px 0;
+  }
+  .w3l-header .navbar-expand-lg .navbar-nav .nav-link {
+    display: block;
+  }
+
+  .w3l-header .navbar-dark .navbar-toggler-icon {
+    background-image: none;
+    padding: 0;
+    width: 34px;
+    height: 34px;
+    display: inline-block;
+    background: var(--primary-color);
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  .w3l-header .navbar-toggler-icon.fa {
+    font-size: 20px;
+    line-height: 1.2em;
+    color: #fff;
+    line-height: 34px;
+  }
+
+  .w3l-header .navbar-toggler {
+    padding: 0rem 0rem !important;
+  }
+
+  .w3l-header .nav-fixed .navbar-expand-lg .navbar-nav .nav-link {
+    color: #fff;
+    opacity: 0.9;
+  }
+
+  .w3l-header .nav-fixed .navbar-expand-lg .mode-container i {
+    color: var(--heading-color);
+  }
+
+}
+
+/* /--/modal-popup--/ */
+.modal-body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: 40px 30px;
+  background-color: var(--bg-color);
+}
+.modal-body .fields-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0px 20px;
+}
+.modal-body input,.modal-body textarea,.modal-body select{
+  outline: none;
+  width: 100%;
+  font-size: 16px;
+  padding: 0px 15px;
+  margin-bottom: 25px;
+  color: var(--para-color);
+  height: 50px;
+  text-align: left;
+  -webkit-appearance: none;
+  align-items: center;
+  padding-left: 15px;
+  background-color: var(--bg-light);
+  border: 1px solid var(--bg-border);
+  border-radius: 8px;
+}
+.modal-body select{
+  -webkit-appearance:menulist;
+}
+.modal-body textarea{
+  height: 150px;
+}
+.modal-body input:focus,.modal-body textarea:focus{
+  border: 1px solid var(--primary-color);
+  background-color: var(--bg-white);
+}
+
+.modal-header {
+  padding: 20px 30px;
+  text-align: center;
+  display: block;
+  background-color: var(--bg-color);
+}
+.modal-body .modal-title {
+  margin-bottom: 0;
+  line-height: 1.5;
+  color: var(--heading-color);
+  font-size: 26px;
+}
+.modal-header span {
+  font-size: 50px;
+}
+/* //appointment */
+/* /--//modal-popup--/ */
+@media only screen and (max-width: 767px) {
+
+  .w3l-header #site-footer .copyright,
+  .w3l-header #site-footer ul.footer-menu {
+    text-align: center;
+  }
+  .modal-body .fields-grid {
+    display: grid;
+    grid-template-columns:1fr;
+    grid-gap: 0px 20px;
+  }
+  .modal-body .modal-title {
+    font-size: 20px;
+  }
+}
+
+
+
+
+
+
+
+
+/**
+ * Owl Carousel v2.3.4
+ * Copyright 2013-2018 David Deutsch
+ * Licensed under: SEE LICENSE IN https://github.com/OwlCarousel2/OwlCarousel2/blob/master/LICENSE
+ */
+.owl-carousel,
+.owl-carousel .owl-item {
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+}
+
+.owl-carousel {
+  display: none;
+  width: 100%;
+}
+
+.owl-carousel .owl-stage {
+  position: relative;
+  touch-action: manipulation;
+  -moz-backface-visibility: hidden;
+}
+
+.owl-carousel .owl-stage:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+.owl-carousel .owl-stage-outer {
+  position: relative;
+  overflow: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+.owl-carousel .owl-item,
+.owl-carousel .owl-wrapper {
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+.owl-carousel .owl-item {
+  min-height: 1px;
+  float: left;
+  -webkit-backface-visibility: hidden;
+  -webkit-touch-callout: none;
+}
+
+.owl-carousel .owl-dots.disabled,
+.owl-carousel .owl-nav.disabled {
+  display: block;
+}
+
+.no-js .owl-carousel,
+.owl-carousel.owl-loaded {
+  display: block;
+}
+
+.owl-carousel .owl-dot,
+.owl-carousel .owl-nav .owl-next,
+.owl-carousel .owl-nav .owl-prev {
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.owl-carousel .owl-nav button.owl-next,
+.owl-carousel .owl-nav button.owl-prev,
+.owl-carousel button.owl-dot {
+  border: none;
+}
+
+.owl-carousel.owl-loading {
+  opacity: 0;
+  display: block;
+}
+
+.owl-carousel.owl-hidden {
+  opacity: 0;
+}
+
+.owl-carousel.owl-refresh .owl-item {
+  visibility: hidden;
+}
+
+.owl-carousel.owl-drag .owl-item {
+  touch-action: pan-y;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.owl-carousel.owl-grab {
+  cursor: move;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+.owl-carousel.owl-rtl {
+  direction: rtl;
+}
+
+.owl-carousel.owl-rtl .owl-item {
+  float: right;
+}
+
+.owl-carousel .animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.owl-carousel .owl-animated-in {
+  z-index: 0;
+}
+
+.owl-carousel .owl-animated-out {
+  z-index: 1;
+}
+
+.owl-carousel .fadeOut {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.owl-height {
+  transition: height .5s ease-in-out;
+}
+
+.owl-carousel .owl-item .owl-lazy {
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+
+.owl-carousel .owl-item .owl-lazy:not([src]),
+.owl-carousel .owl-item .owl-lazy[src^=""] {
+  max-height: 0;
+}
+
+.owl-carousel .owl-item img.owl-lazy {
+  transform-style: preserve-3d;
+}
+
+.owl-carousel .owl-video-wrapper {
+  position: relative;
+  height: 100%;
+  background: #000;
+}
+
+.owl-carousel .owl-video-play-icon {
+  position: absolute;
+  height: 80px;
+  width: 80px;
+  left: 50%;
+  top: 50%;
+  margin-left: -40px;
+  margin-top: -40px;
+  background: url(owl.video.play.png) no-repeat;
+  cursor: pointer;
+  z-index: 1;
+  -webkit-backface-visibility: hidden;
+  transition: transform .1s ease;
+}
+
+.owl-carousel .owl-video-play-icon:hover {
+  transform: scale(1.3, 1.3);
+}
+
+.owl-carousel .owl-video-playing .owl-video-play-icon,
+.owl-carousel .owl-video-playing .owl-video-tn {
+  display: none;
+}
+
+.owl-carousel .owl-video-tn {
+  opacity: 0;
+  height: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: opacity .4s ease;
+}
+
+.owl-carousel .owl-video-frame {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+}
+
+@media (max-width:992px) {
+  .owl-theme .owl-nav {
+    display: none !important;
+  }
+}
+
+@media (max-width: 568px) {
+
+  .owl-carousel .owl-dots.disabled,
+  .owl-carousel .owl-nav.disabled {
+    display: none;
+  }
+  
+}
+
+
+    </style>
+
+</head>
+
+<body id="myTable">
+
+    <input type="checkbox" id="nav-toggle">
+    <div class="sidebar" style="background-color: rgb(0, 0, 119);">
+        <div class="sidebar-brand">
+            <h2><span class="las la-clinic-medical" style="color: whitesmoke;"></span> <span style="color: whitesmoke;">Hospital</span></h2>
+        </div>
+        <!--Secciones-del-tablero-->
+        <div class="sidebar-menu" >
+            <ul>
+                <li>
+                    <a href="#1st" ><span class="las la-home"></span>
+                    <span>HOME</span></a>
+                </li>
+                <li>
+                    <a href="#2nd"  ><span class="las la-stethoscope"></span>
+                    <span>DOCTORS</span></a>
+                </li>
+                <li>
+                    <a href="#3rd"><span class="las la-users"></span>
+                    <span>EMPLOYEES</span></a>
+                </li>
+                <li>
+                    <a href="#4th"><span class="las la-user-injured"></span>
+                    <span>WEB IMAGES</span></a>
+                </li>
+                <li>
+                    <a href=""><span class="las la-history"></span>
+                    <span>PATIENT HISTORY</span></a>
+                </li>
+                <li>
+                    <a href=""><span class="las la-search"></span>
+                    <span>SEARCH PATIENT</span></a>
+                </li>
+                <li>
+                    <a href=""><span class="las la-book-medical"></span>
+                    <span>REPORT</span></a>
+                </li>
+                <li>
+                    <a href="{{url_for('pl_home')}}"><span class="las la-sign-out-alt"></span>
+                    <span>LOGOUT</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+  
+
+
+
+    <div class="main-content">
+        <header >
+            <div style="display: flex;justify-content: space-between;">
+            <h2 style="color: rgb(3, 3, 160);">
+                <label for="nav-toggle">
+                    <span class="las la-bars" style="color: rgb(1, 1, 255);"></span>
+                </label> DASHBOARD
+            </h2>
+            
+            <div class="search-wrapper" style="float: right;border: 2px solid blue;">
+                <span class="las la-search" style="color: rgb(1, 1, 255);font-weight: bolder;"></span>
+                <input type="search" id="myInput"  placeholder="Search Here" />
+            </div>
+            <div class="user-wrapper" style="float: right;">
+                <img src="{{url_for('static',filename='images/Avatar.png')}}" width="40px" height="40px" alt="">
+                <div>
+                    <h4 style="color: rgb(3, 3, 160);">Admin</h4>
+                </div>
+            </div>
+        </div>
+        </header>
+        
+            <main style="padding-top: 20px;" id="1st">
+                <div class="cards">
+
+                    <div class="card-single" style="background-color:blue">
+                        <div>
+                            <h1 style="color: white;">{{admin.no_of_rows}}</h1>
+                            <span style="color: white;">TOTAL APPOINTMENTS TODAY</span>
+                        </div>
+                        <div>
+                            <span class="las la-users" style="color: white;"></span>
+                        </div>
+                    </div>
+
+                    <div class="card-single" style="background-color:blue">
+                        <div>
+                            <h1 style="color: white;">{{da.no_of_docs_avl}}</h1>
+                            <span style="color: white;">TOTAL DOCTORS AVAILABLE </span>
+                        </div>
+                        <div>
+                            <span class="las la-stethoscope" style="color: white;"></span>
+                        </div>
+                    </div>
+
+                    <div class="card-single" style="background-color:blue;">
+                        <div>
+                            <h1 style="color: white;">{{tp.no_of_patient}}</h1>
+                            <span style="color: white;">TOTAL PATIENTS</span>
+                        </div>
+                        <div>
+                            <span class="las la-wheelchair" style="color: white;"></span>
+                        </div>
+                    </div>
+
+                    <div class="card-single" style="background-color:blue">
+                        <div>
+                            <h1>2</h1>
+                            <span>BOOKED BEDS</span>
+                        </div>
+                        <div>
+                            <span class="lab la-wpforms"></span>
+                        </div>
+                    </div>
+                </div>
+                <!--Tabla-->
+                <div class="recent-grid">
+                    <div class="projects">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>TODAYS APPOINTMENTS</h3>
+
+                                <!-- <a >Add  <span class="las la-arrow-right">
+                                </span></a> -->
+                            </div>
+
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table width="100%">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Age</td>
+                                                <td>Mobile</td>
+                                                <td>Address</td>
+                                                <td>Problem</td>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for  row in pd %}
+                                            <tr>
+                                            
+                                                <td>{{row.name}}</td>
+                                                <td>{{row.age}}</td>
+                                                <td>{{row.mobile}}</td>
+                                                <td>{{row.address}}</td>
+                                                <td>{{row.problem}}</td>
+                                            </tr>
+                                        
+                                            {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="customers">
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Slot Availability</h3>
+
+                                <a href="{{('slots')}}" style="color: blue;font-weight: 600;"> <span class="las la-plus">
+                                </span>Update Slots</a>
+                            </div>
+
+                            <div class="card-body">
+
+                                <div class="customer">
+                                    <div class="info">
+                                        <!-- <img src="avatars/1.png" width="40px" height="40px" alt=""> -->
+                                        <div>
+                                            <h4>Total Available Slot</h4>
+                                        </div>
+                                    </div>
+                                    <div class="contact">
+                                        <span >{{sl.total_slot}}</span>
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="customer">
+                                  <div class="info">
+                                      <!-- <img src="avatars/1.png" width="40px" height="40px" alt=""> -->
+                                      <div>
+                                          <h4>Total Booked Slot</h4>
+                                      </div>
+                                  </div>
+                                  <div class="contact">
+                                      <span >{{total.no_of_rows}}</span>
+                                      
+                                  </div>
+                              </div>
+
+                               <div class="customer">
+                                  <div class="info">
+                                      <!-- <img src="avatars/1.png" width="40px" height="40px" alt=""> -->
+                                      <div>
+                                          <h4>Total Available Slot</h4>
+                                      </div>
+                                  </div>
+                                  <div class="contact">
+                                      <span >{{sl.total_slot - total.no_of_rows}}</span>
+                                      
+                                  </div>
+                              </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </main>
+   
+    
+
+
+    <main style="padding-top: 20px;" id="2nd">
+        <div class="cards">
+
+            <div class="card-single" style="background-color:blue">
+                <div>
+                    <h1 style="color: white;">{{td.no_of_docs}}</h1>
+                    <span style="color: white;">TOTAL DOCTORS</span>
+                </div>
+                <div>
+                    <span class="las la-users" style="color: white;"></span>
+                </div>
+            </div>
+
+            <div class="card-single" style="background-color:blue">
+                <div>
+                    <h1 style="color: white;">{{da.no_of_docs_avl}}</h1>
+                    <span style="color: white;">TOTAL AVAILABLE DOCTORS TODAY </span>
+                </div>
+                <div>
+                    <span class="las la-stethoscope" style="color: white;"></span>
+                </div>
+            </div>
+
+            <div class="card-single" style="background-color:blue">
+                <div>
+                    <h1 style="color: white;">{{tp.no_of_patient}}</h1>
+                    <span style="color: white;">TOTAL PATIENTS</span>
+                </div>
+                <div>
+                    <span class="las la-wheelchair" style="color: white;"></span>
+                </div>
+            </div>
+
+            <div class="card-single" style="background-color:blue">
+                <div>
+                    <h1 style="color: white;">2</h1>
+                    <span style="color: white;">BOOKED BEDS</span>
+                </div>
+                <div>
+                    <span class="lab la-wpforms" style="color: white;"></span>
+                </div>
+            </div>
+        </div>
+        <!--Tabla-->
+        <div class="recent-grid">
+            <div class="projects">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Doctors Details</h3>
+                        <li class="nav-item" >
+                            <a href="{{('appointment')}}" class="nav-link" > <span class="las la-plus"></span> Add Doctors</a>
+                          </li>
+                        <!-- <a href="#" style="color: blue;">Add Doctors<span class="las la-plus">
+                        </span></a> -->
+                    </div>
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table width="100%">
+                                <thead>
+                                    <tr>
+                                        <td>Doctor Id</td>
+                                        <td>Name</td>
+                                        <td>Age</td>
+                                        <td>Bloodgroup</td>
+                                        <td>Mobile</td>
+                                        <td>Email Id</td>
+                                        <td>Specialization</td>
+                                        <td>Department</td>
+                                        <td>Address</td>
+                                        <td>Status</td>
+                                        <td>Edit</td>
+                                        <td>Delete</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for  row in doc %}
+                                    <tr>
+                                       <td>{{row.d_id}}</td>
+                                        <td>{{row.name}}</td>
+                                        <td>{{row.age}}</td>
+                                        <td>{{row.bloodgroup}}</td>
+                                        <td>{{row.phone}}</td>
+                                        <td>{{row.email}}</td>
+                                        <td>{{row.specialization}}</td>
+                                        <td>{{row.department}}</td>
+                                        <td>{{row.address}}</td>
+                                        <td>{{row.status}}</td>
+                                        <td><a class="nav-link"   href="/update/{{row.id}}"  onclick=" confirm('Are you sure you want to Edit?');" ><i class='las la-edit' style='font-size:24px'></i></a></td>
+                                        <td><a class="nav-link"   href="/delete/{{row.id}}"  onclick=" confirm('Are you sure you want to Remove?');" ><i class='las la-trash' style='font-size:24px'></i></a></td>
+
+                                    </tr>
+                                   
+                                    {% endfor %}
+
+                                </tbody>
+                                
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="customers">
+
+                <div class="card">
+                    
+                    <div class="card-header">
+                        <h3>Available Doctors</h3>
+
+                        <!-- <button>Mostrar todo <span class="las la-arrow-right">
+                        </span></button> -->
+                    </div>
+
+                    <div class="card-body">
+
+                  {% for row in av %}
+                        <div class="customer">
+                            <div class="info">
+                                <div style="height:10px;width:10px;background-color:green;border-radius: 50%;margin-top: -20px;"></div>&nbsp;&nbsp;
+                                <span>
+                                    <div>
+                                        <h4>{{row.name}}</h4>
+                                        <small style="color: blue;">{{row.department}}</small>
+                                    </div>
+                                </span>
+                                
+                            </div>
+                            <div class="contact">
+                                <span  class="las la-user-circle"></span>
+                                <span class="lab la-whatsapp"></span>
+                                <span class="las la-phone"></span>
+                            </div>
+                        </div>
+                {% endfor %}
+                       
+
+                       
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+<!-- --------------------------For Employees----------------------------- -->
+
+<main style="padding-top: 20px;" id="3rd">
+  <div class="cards">
+
+      <div class="card-single" style="background-color:blue">
+          <div>
+              <h1 style="color: white;">10</h1>
+              <span style="color: white;">TOTAL EMPLOYEES</span>
+          </div>
+          <div>
+              <span class="las la-users" style="color: white;"></span>
+          </div>
+      </div>
+
+      <div class="card-single" style="background-color:blue">
+          <div>
+              <h1 style="color: white;">8</h1>
+              <span style="color: white;"> AVAILABLE EMPLOYEES </span>
+          </div>
+          <div>
+              <span class="las la-users" style="color: white;"></span>
+          </div>
+      </div>
+
+      <div class="card-single" style="background-color:blue">
+          <div>
+              <h1 style="color: white;"> 8 </h1>
+              <span style="color: white;">TOTAL EMPLOYEE IN ADMINSTRATION</span>
+          </div>
+          <div>
+              <span class="las la-user-shield" style="color: white;"></span>
+          </div>
+      </div>
+
+      <div class="card-single" style="background-color:blue">
+          <div>
+              <h1 style="color: white;">2</h1>
+              <span style="color: white;">TOTAL EMPLOYEE IN DEPARTMENTS</span>
+          </div>
+          <div>
+              <span class="las la-users" style="color: white;"></span>
+          </div>
+      </div>
+  </div>
+  <!--Tabla-->
+  <div class="recent-grid">
+      <div class="projects">
+          <div class="card">
+              <div class="card-header">
+                  <h3>Employee Details</h3>
+                  <li class="nav-item" >
+                      <a href="{{url_for('add_employees')}}" class="nav-link" > <span class="las la-plus"></span> Add Employees</a>
+                    </li>
+                 
+              </div>
+
+              <div class="card-body">
+                  <div class="table-responsive" >
+                      <table width="200%" >
+                          <thead >
+                              <tr>
+                                  <td>Photo</td>
+                                  <td>Employee Id</td>
+                                  <td>Name</td>
+                                  <td>Email Id</td>
+                                  <td>Address</td>
+                                  <td>Gender</td>
+                                  <td>Mobile</td>
+                                  <td>D.O.B</td>
+                                  <td>Bloodgroup</td>
+                                  <td>Age</td>
+                                  <td>Designation</td>
+                                  <td>Department</td>
+                                  <td>Status</td>
+                                  <td>Edit</td>
+                                  <td>Delete</td>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              {% for  row in emp %}
+                              <tr>
+                                <td><img src="/static/uploads/{{row.photo}}" alt="/static/images/3.png" style="height:40px;width: 40px;border-radius: 5px;" ></td>
+                                 <td>{{row.e_id}}</td>
+                                  <td>{{row.name}}</td>
+                                  <td>{{row.email}}</td>
+                                  <td>{{row.address}}</td>
+                                  <td>{{row.gender}}</td>
+                                  <td>{{row.phone}}</td>
+                                  <td>{{row.dob}}</td>
+                                  <td>{{row.bloodgroup}}</td>
+                                  <td>{{row.age}}</td>
+                                  <td>{{row.designation}}</td>
+                                  <td>{{row.department}}</td>
+                                  <td>{{row.status}}</td>
+                                  <td><a class="nav-link"   href="#"><i class='las la-edit' style='font-size:24px'></i></a></td>
+                                  <td><a class="nav-link"   href="/delete_employee/{{row.id}}"  onclick=" confirm('Are you sure you want to Remove?');" ><i class='las la-trash' style='font-size:24px'></i></a></td>
+                              </tr>
+                             
+                              {% endfor %}
+
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+
+      <div class="customers">
+
+          <div class="card">
+              
+              <div class="card-header">
+                  <h3>Present Employees</h3><h3 style="color: blue;font-weight: 500;">{{emp_avl.no_of_emp}}</h3>
+              </div>
+
+              <div class="card-body">
+
+            {% for row in emp %}
+                  <div class="customer">
+                      <div class="info">
+                          <div style="color:green"> <img src="/static/uploads/{{row.photo}}" style="height:40px;width: 40px;border-radius: 50%;border: 3px solid green;" alt="">
+                            <i class="bi bi-caret-up-fill" ></i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-fill" viewBox="0 0 16 16">
+                            <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+                          </svg></div>&nbsp;&nbsp;
+                          <span>
+                              <div>
+                                  <h4>{{row.name}}</h4>
+                                  <small style="color: blue;">{{row.department}}</small>
+                              </div>
+                          </span>
+                          
+                      </div>
+                      <div class="contact">
+                          <span  class="las la-user-circle"></span>
+                          <span class="lab la-whatsapp"></span>
+                          <span class="las la-phone"></span>
+                      </div>
+                  </div>
+          {% endfor %}
+                  
+              </div>
+          </div>
+      </div>
+  </div>
+</main>
+
+<!-- -------------------------------------FOR WEB IMAGES------------------------------- -->
+
+<main style="padding-top: 20px;" id="4th">
+  <div class="cards">
+
+      <div class="card-single" style="background-color:blue">
+          <div>
+              <h1 style="color: white;">10</h1>
+              <span style="color: white;">TOTAL EMPLOYEES</span>
+          </div>
+          <div>
+              <span class="las la-users" style="color: white;"></span>
+          </div>
+      </div>
+
+      <div class="card-single" style="background-color:blue">
+          <div>
+              <h1 style="color: white;">8</h1>
+              <span style="color: white;"> AVAILABLE EMPLOYEES </span>
+          </div>
+          <div>
+              <span class="las la-users" style="color: white;"></span>
+          </div>
+      </div>
+
+      <div class="card-single" style="background-color:blue">
+          <div>
+              <h1 style="color: white;"> 8 </h1>
+              <span style="color: white;">TOTAL EMPLOYEE IN ADMINSTRATION</span>
+          </div>
+          <div>
+              <span class="las la-user-shield" style="color: white;"></span>
+          </div>
+      </div>
+
+      <div class="card-single" style="background-color:blue">
+          <div>
+              <h1 style="color: white;">2</h1>
+              <span style="color: white;">TOTAL EMPLOYEE IN DEPARTMENTS</span>
+          </div>
+          <div>
+              <span class="las la-users" style="color: white;"></span>
+          </div>
+      </div>
+  </div>
+  <!--Tabla-->
+  <div class="recent-grid">
+      <div class="projects">
+          <div class="card">
+              <div class="card-header">
+                  <h3>WEB IMAGES</h3>
+                  <li class="nav-item" >
+                      <!-- <a href="{{url_for('add_employees')}}" class="nav-link" > <span class="las la-plus"></span> Add Employees</a> -->
+                    </li>
+                 
+              </div>
+
+              <div class="card-body">
+                  <div class="table-responsive" >
+                      <table width="200%" >
+                          <thead >
+                              <tr>
+                                  <td>Slider 1</td>
+                                  <td>Slider 2</td>
+                                  <td>Slider 3</td>
+                                  <td>Slider 4</td>
+                                  <!-- <td>Edit</td>
+                                  <td>Delete</td> -->
+                                  
+                              </tr>
+                          </thead>
+                          <tbody>
+                              {% for  row in slider %}
+                              <tr>
+                                <td><img src="/static/uploads/{{row.sl1}}" alt="/static/images/3.png" style="height:80px;width: 180px;border-radius: 5px;" ></td>
+                                <td><img src="/static/uploads/{{row.sl2}}" alt="/static/images/3.png" style="height:80px;width: 180px;border-radius: 5px;" ></td>
+                                <td><img src="/static/uploads/{{row.sl3}}" alt="/static/images/3.png" style="height:80px;width: 180px;border-radius: 5px;" ></td>
+                                <td><img src="/static/uploads/{{row.sl4}}" alt="/static/images/3.png" style="height:80px;width: 180px;border-radius: 5px;" ></td>
+
+                                  <!-- <td><a class="nav-link"   href="#"><i class='las la-edit' style='font-size:24px'></i></a></td>
+                                  <td><a class="nav-link"   href="/delete_employee/{{row.id}}"  onclick=" confirm('Are you sure you want to Remove?');" ><i class='las la-trash' style='font-size:24px'></i></a></td> -->
+                              </tr>
+                             
+                              {% endfor %}
+
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+
+              <div class="card-body">
+                <div class="table-responsive" >
+                    <table width="200%" >
+                        <thead >
+                            <tr>
+                                <td>Slider 1 Content</td>
+                                <td>Slider 2 Content</td>
+                                <td>Slider 3 Content</td>
+                                <td>Slider 4 Content</td>
+                                <!-- <td>Edit</td>
+                                <td>Delete</td> -->
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for  row in slider %}
+                            <tr>
+                                <td>{{row.content_sl1}}</td>
+                                <td>{{row.content_sl2}}</td>
+                                <td>{{row.content_sl3}}</td>
+                                <td>{{row.content_sl4}}</td>
+
+                                <!-- <td><a class="nav-link"   href="#"><i class='las la-edit' style='font-size:24px'></i></a></td>
+                                <td><a class="nav-link"   href="/delete_employee/{{row.id}}"  onclick=" confirm('Are you sure you want to Remove?');" ><i class='las la-trash' style='font-size:24px'></i></a></td> -->
+                            </tr>
+                           
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+          </div>
+      </div>
+
+      <div class="customers">
+
+          <div class="card">
+              
+              <div class="card-header">
+                  <h5>Upload/Change Slider Images</h3><h3 style="color: blue;font-weight: 500;"></h5>
+              </div>
+
+              <div class="card-body">
+{% for row in slider %}
+                <form action="http://127.0.0.1:5001/slider" method="post" enctype="multipart/form-data" >
+                  <label>Slider 1</label>
+                  <input type="file" id="fileInput" name="sl1[]" >
+
+                  <button type="submit">Upload</button>&nbsp;<span style="color: blue;">{{row.sl1}}</span>
+                </form>
+
+                  <form action="http://127.0.0.1:5001/slider" method="post" enctype="multipart/form-data" >
+                   <label>Slider 2</label>
+                  <input type="file" id="fileInput" name="sl2[]">
+                  <button type="submit">Upload</button>&nbsp;<span style="color: blue;">{{row.sl2}}</span>
+                </form>
+
+                <form action="http://127.0.0.1:5001/slider" method="post" enctype="multipart/form-data" >
+                  <label>Slider 2</label>
+                 <input type="file" id="fileInput" name="sl3[]">
+                 <button type="submit">Upload</button>&nbsp;<span style="color: blue;">{{row.sl3}}</span>
+               </form>
+
+               <form action="http://127.0.0.1:5001/slider" method="post" enctype="multipart/form-data" >
+                <label>Slider 2</label>
+               <input type="file" id="fileInput" name="sl4[]">
+               <button type="submit">Upload</button>&nbsp;<span style="color: blue;">{{row.sl4}}</span>
+             </form><br><br>
+
+<h4>For Slider Content</h1><br>
+             <form action="http://127.0.0.1:5001/slider" method="post">
+              <label>Slider 1</label><br>
+              <textarea type="textarea" value="{{row.content_sl1}}"  name="content_sl1" ></textarea><br>
+              <label>Slider 2</label><br>
+
+              <input type="text" value="{{row.content_sl2}}"   name="content_sl2" ><br>
+              <label>Slider 3</label><br>
+
+              <input type="text" value="{{row.content_sl3}}"   name="content_sl3" ><br>
+              <label>Slider 4</label><br>
+
+              <input type="text" value="{{row.content_sl4}}"   name="content_sl4" ><br>
+              <button type="submit">Upload</button>
+            </form>
+                  {% endfor %}
+              </div>
+          </div>
+      </div>
+  </div>
+</main>
+
+
+<!-- -------------------------------------END WEB IMAGES------------------------------- -->
+
+<!-- ------------------------------------For Adding Medicine--------------------------- -->
+
+<main style="padding-top: 20px;" id="5th">
+  <div class="cards">
+
+      <div class="card-single" style="background-color:blue">
+          <div>
+              <h1 style="color: white;">10</h1>
+              <span style="color: white;">TOTAL MEDICINE</span>
+          </div>
+          <div>
+              <span class="las la-users" style="color: white;"></span>
+          </div>
+      </div>
+
+      <div class="card-single" style="background-color:blue">
+          <div>
+              <h1 style="color: white;">8</h1>
+              <span style="color: white;"> ORDER PENDING </span>
+          </div>
+          <div>
+              <span class="las la-users" style="color: white;"></span>
+          </div>
+      </div>
+
+      <div class="card-single" style="background-color:blue">
+          <div>
+              <h1 style="color: white;"> 8 </h1>
+              <span style="color: white;">ORDER COMPLETED</span>
+          </div>
+          <div>
+              <span class="las la-user-shield" style="color: white;"></span>
+          </div>
+      </div>
+
+      <div class="card-single" style="background-color:blue">
+          <div>
+              <h1 style="color: white;">2</h1>
+              <span style="color: white;">TOTAL ORDERS</span>
+          </div>
+          <div>
+              <span class="las la-users" style="color: white;"></span>
+          </div>
+      </div>
+  </div>
+  <!--Tabla-->
+  <div class="recent-grid">
+      <div class="projects">
+          <div class="card">
+              <div class="card-header">
+                  <h3>Employee Details</h3>
+                  <li class="nav-item" >
+                      <a href="{{url_for('add_employees')}}" class="nav-link" > <span class="las la-plus"></span> Add Items</a>
+                    </li>
+                 
+              </div>
+
+              <div class="card-body">
+                  <div class="table-responsive" >
+                      <table width="200%" >
+                          <thead >
+                              <tr>
+                                  <td>Photo</td>
+                                  <td>Med_Code</td>
+                                  <td>Name</td>
+                                  <td>Price</td>
+                                  <td>Quantity</td>
+                                  <td>Details</td>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              {% for  row in med %}
+                              <tr>
+                                <td><img src="/static/uploads/{{row.file}}" alt="/static/images/3.png" style="height:40px;width: 40px;border-radius: 5px;" ></td>
+                                 <td>{{row.code}}</td>
+                                  <td>{{row.name}}</td>
+                                  <td>{{row.price}}</td>
+                                  <td>{{row.quantity}}</td>
+                                  <td>{{row.search_metadata}}</td>
+                                  
+                                  <td><a class="nav-link"   href="#"><i class='las la-edit' style='font-size:24px'></i></a></td>
+                                  <td><a class="nav-link"   href="/delete_employee/{{row.id}}"  onclick=" confirm('Are you sure you want to Remove?');" ><i class='las la-trash' style='font-size:24px'></i></a></td>
+                              </tr>
+                             
+                              {% endfor %}
+
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+
+      <div class="customers">
+
+          <div class="card">
+              
+              <div class="card-header">
+                  <h3>Present Employees</h3><h3 style="color: blue;font-weight: 500;">{{emp_avl.no_of_emp}}</h3>
+              </div>
+
+              <div class="card-body">
+
+            {% for row in emp %}
+                  <div class="customer">
+                      <div class="info">
+                          <div style="color:green"> <img src="/static/uploads/{{row.photo}}" style="height:40px;width: 40px;border-radius: 50%;border: 3px solid green;" alt="">
+                            <i class="bi bi-caret-up-fill" ></i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-fill" viewBox="0 0 16 16">
+                            <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+                          </svg></div>&nbsp;&nbsp;
+                          <span>
+                              <div>
+                                  <h4>{{row.name}}</h4>
+                                  <small style="color: blue;">{{row.department}}</small>
+                              </div>
+                          </span>
+                          
+                      </div>
+                      <div class="contact">
+                          <span  class="las la-user-circle"></span>
+                          <span class="lab la-whatsapp"></span>
+                          <span class="las la-phone"></span>
+                      </div>
+                  </div>
+          {% endfor %}
+                  
+              </div>
+          </div>
+      </div>
+  </div>
+</main>
+
+
+</div>
+</div>
+
+
+
+
+<!-- ------------------------------End Employees------------------------------ -->
+
+
+
+<script src="{{url_for('static',filename='js/jquery-3.3.1.min.js')}}"></script>   
+	  <!-- script for banner slider-->
+	  <script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+
+
+    <script>
+      $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+          var value = $(this).val().toLowerCase();
+          $("#myTable tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
+        });
+      });
+      </script>
+
+<script>
+  $(document).ready(function(){
+   // File type validation
+      $("#fileInput").change(function(){
+          var fileLength = this.files.length;
+          var match= ["image/jpeg","image/png","image/jpg","image/gif"];
+          var i;
+          for(i = 0; i < fileLength; i++){
+              var file = this.files[i];
+              var imagefile = file.type;
+              if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2]) || (imagefile==match[3]))){
+                  alert('Please select a valid image file (JPEG/JPG/PNG/GIF).');
+                  $("#fileInput").val('');
+                  return false;
+              }
+          }
+      });
+  });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Health care</title>
+	<!-- <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/login.css')}}"> -->
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{{url_for('static',filename='css/style-starter.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,600,700&display=swap" rel="stylesheet">
+
+
+
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style1-starter.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+
+</head>
+<body style='font-size: large;'>
+<!-- Navbar -->
+{% include 'middleware_nav.html' %}
+<!-- End navbar -->
+
+  <!-- //modal-popup-->
+<div class="selectpackage">
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            &times;</button>
+          <h4 class="modal-title" id="myModalLabel">
+            Make An Appointment</h4>
+        </div>
+        <div class="modal-body packages">
+          <div class="appointment-form">
+            <form action="http://127.0.0.1:5001/pl_home" method="post">
+              <div class="fields-grid">
+                <div class="styled-input">
+
+                  <div class="appointment-form-field">
+
+                    <input type="text" name="name" placeholder="Full Name" required="">
+                  </div>
+                </div>
+                <div class="styled-input">
+
+                  <div class="appointment-form-field">
+
+                    <input type="phone" name="mobile" placeholder="Enter Your Number" required="">
+                  </div>
+                </div>
+
+                <div class="styled-input">
+
+                  <div class="appointment-form-field">
+
+                    <input type="email" name="email" placeholder="Enter Your Email" required="">
+                  </div>
+                </div>
+                <div class="styled-input">
+
+                  <div class="appointment-form-field">
+
+                    <input type="date" name="date" placeholder="Set a Date" required="">
+                  </div>
+                </div>
+                <div class="styled-input">
+
+                  <div class="appointment-form-field">
+
+                    <select id="gender" name="gender" required="Gender">
+                      <option value="">Gender*</option>
+                      <option value="">Male</option>
+                      <option value="">Female</option>
+                      <option value="">Others</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="styled-input">
+
+                  <div class="appointment-form-field">
+
+                    <input type="text" name="age" placeholder="Enter Your Age" required="">
+                  </div>
+                </div>
+
+                <div class="styled-input">
+
+                  <div class="appointment-form-field">
+
+                    <input type="text" name="address" placeholder="Enter Your Address" required="">
+                  </div>
+                </div>
+
+                <div class="styled-input">
+
+                  <div class="appointment-form-field">
+
+                    <input type="text" name="problem" placeholder="Tell Us Your Problem" required="">
+                  </div>
+                </div>
+
+              </div>
+              <div class="appointment-btn text-lg-right">
+                <button type="submit" class="btn btn-style btn-primary mt-4">Book Appointment</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    $('#myModal').modal('show');
+  </script>
+</div>
+<!-- //modal-popup-->
+
+
+<section class="vh-100" style="background-color: #9fb4dc;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+<form action="" method="post">
+            <h3 class="mb-5">VIEW YOUR BILL LIST</h3>
+
+            <div class="form-outline mb-4">
+              <label class="form-label" for="typeEmailX-2">Enter Your Mobile No</label>
+
+              <input type="phone" name="mobile" id="typeEmailX-2" class="form-control form-control-lg" />
+            </div>
+
+            
+<div>{{msg}}</div>
+            <button class="btn btn-primary btn-lg btn-block" style="background-color: blue;" type="submit">VIEW</button>
+
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+	
+<!-- <center>
+    <form action="" style="margin-top: 180px;background-color: rgb(0, 17, 250);height: 40vh;width: 30%;border-radius: 10px;">
+      <h2 style="font-weight: bolder;color: rgb(255, 255, 255);margin-top: 15px;">View Your Appointment</h2>
+      <input type="phone" name="mobile" required placeholder="Enter Your Mobile No." style="margin-top: 60px;width: 70%;border-radius: 5px;background-color: azure;"><br><br>
+      <button type="submit" style="width: 60%;border-radius: 10px;background-color: rgb(238, 245, 245);color: rgb(0, 56, 223);font-weight: bolder;">View</button>
+    </form>
+
+  
+</center> -->
+
+	
+
+	<script src="{{url_for('static',filename='js/jquery-3.3.1.min.js')}}"></script>   
+	  <!-- script for banner slider-->
+	  <script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+</body>
+</html>
+
+
+

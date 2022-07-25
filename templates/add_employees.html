@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Health care</title>
+    
+    <link rel="stylesheet" href="{{url_for('static',filename='css/appointment.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/nav.css')}}">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+
+   </head>
+<body style="font-size: larger;">
+
+
+<!-- header section starts  -->
+<header class="header" >
+
+  <!-- <a href="#" class="logo" > <i class="fas fa-heartbeat" style='color:red;' ></i> healthcare. </a> -->
+
+  <nav class="navbar">
+      <a href="{{url_for('admin_dashboard')}}" style="font-size: larger;color: blue;">Dashboard</a>
+  </nav>
+
+  <div id="menu-btn" class="fas fa-bars"></div>
+
+</header>
+
+<!-- header section ends -->
+
+  <div class="wrapper" style="margin-top: 80px;margin-bottom: 70px;">
+    <h2>Add Doctors Details</h2>
+    <center>
+    <form action="" method="post" enctype="multipart/form-data">
+      <div class="fields-grid">
+        <div class="styled-input">
+          <div class="styled-input">
+            <div class="styled-input">
+
+              <div class="appointment-form-field">
+    
+                <input type="number"  name="e_id" required="" placeholder="Enter Employee Id" style="width: 80%;height:40px;border: 2px solid blue;border-radius: 10px;font-size: large;">
+                  
+              </div>
+            </div><br>
+            <div class="appointment-form-field">
+  
+              <input type="text"  name="name" required="" placeholder="Enter name" style="width: 80%;height:40px;border: 2px solid blue;border-radius: 10px;font-size: large;">
+                
+            </div>
+          </div><br>
+
+          <div class="styled-input">
+
+            <div class="appointment-form-field">
+  
+              <input type="email" name="email" required="" placeholder="Enter Your Email" style="width: 80%;height:40px;border: 2px solid blue;border-radius: 10px;font-size: large;">
+                
+            </div>
+          </div><br>
+
+          <div class="appointment-form-field">
+    
+            <input type="address"  name="address" required="" placeholder="Enter Address" style="width: 80%;height:40px;border: 2px solid blue;border-radius: 10px;font-size: large;">
+              
+          
+          </div><br>
+
+          <div class="appointment-form-field">
+
+            <select  name="gender" required=""  style="width: 80%;height:40px;border: 2px solid blue;border-radius: 10px;font-size: large;">
+              <option >Select Gender*</option>
+              <option >Male</option>
+              <option >Female</option>
+              <option>Others</option>
+            </select>
+        </div><br>
+
+        <div class="styled-input">
+
+            <div class="appointment-form-field">
+  
+              <input  type="phone" name="phone" required="" placeholder="Enter Mobile Number" style="width: 80%;height:40px;border: 2px solid blue;border-radius: 10px;font-size: large;">
+                
+          </div><br>
+
+          <div class="styled-input">
+
+            <div class="appointment-form-field">
+  
+              <input  type="" name="dob" required="" placeholder="Enter Birth Date" style="width: 80%;height:40px;border: 2px solid blue;border-radius: 10px;font-size: large;">
+                
+          </div><br>
+
+          <div class="styled-input">
+
+            <div class="styled-input">
+  
+              <div class="appointment-form-field">
+    
+                <input  type="text" name="bloodgroup" required="" placeholder="Enter Bloodgroup" style="width: 80%;height:40px;border: 2px solid blue;border-radius: 10px;font-size: large;">
+                  
+            </div><br>
+
+          <div class="styled-input">
+
+            <div class="appointment-form-field">
+  
+              <input type="number"  name="age" required="" placeholder="Enter Age" style="width: 80%;height:40px;border: 2px solid blue;border-radius: 10px;font-size: large;">
+                
+          </div><br>  
+          
+          <div class="styled-input">
+
+            
+          <div class="appointment-form-field">
+
+            <select  name="designation" required=""  style="width: 80%;height:40px;border: 2px solid blue;border-radius: 10px;font-size: large;">
+              <option >Select Designation*</option>
+              <option >Doctor</option>
+              <option >Specialist</option>
+              <option>Surgeon</option>
+              <option>Super Specialist</option>
+              <option>Receiptant</option>
+              <option>Nurse</option>
+              <option>Pharmacist</option>
+
+            </select>
+        </div><br>
+        <div class="appointment-form-field">
+
+          <select  name="department"  required=""  style="width: 80%;height:40px;border: 2px solid blue;border-radius: 10px;font-size: large;">
+            <option >Select Department*</option>
+            <option >Eye Opd</option>
+            <option >Neurology</option>
+            <option>Medicine</option>
+            <option>Urology</option>
+            <option>Adminstration</option>
+            <option>Support</option>
+
+          </select>
+        
+      </div><br>
+
+      <div class="styled-input">
+
+        <div class="appointment-form-field">
+
+          <input type="file"  name="photo[]" id="fileInput" required="" placeholder="Enter Age" style="width: 80%;height:40px;border: 2px solid blue;border-radius: 10px;font-size: large;">
+            
+      </div><br> 
+
+      <div class="appointment-form-field">
+
+        <select  name="status" required=""  style="width: 80%;height:40px;border: 2px solid blue;border-radius: 10px;font-size: large;">
+          <option >Status*</option>
+          <option >Available</option>
+          <option >Unavailable</option>
+          
+        </select>
+      </div>
+    
+      <div class="appointment-btn text-lg-right">
+        <button type="submit" style="background-color: blue;color: white;" class="btn btn-style btn-primary mt-4">Update</button>
+      </div>
+    </form>
+  </center>
+  </div>
+
+<script src="{{url_for('static',filename='js/nav.js')}}"></script>
+
+<script>
+  $(document).ready(function(){
+   // File type validation
+      $("#fileInput").change(function(){
+          var fileLength = this.files.length;
+          var match= ["image/jpeg","image/png","image/jpg","image/gif"];
+          var i;
+          for(i = 0; i < fileLength; i++){
+              var file = this.files[i];
+              var imagefile = file.type;
+              if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2]) || (imagefile==match[3]))){
+                  alert('Please select a valid image file (JPEG/JPG/PNG/GIF).');
+                  $("#fileInput").val('');
+                  return false;
+              }
+          }
+      });
+  });
+  </script>
+
+</body>
+</html>

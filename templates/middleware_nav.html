@@ -1,0 +1,194 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Health care</title>
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,600,700&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="assets/css/style-starter.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style12.css')}}">
+    <!-- <link rel="stylesheet" href="{{url_for('static',filename='css/style12.css')}}"> -->
+  </head>
+  <body>
+    <section class="w3l-bootstrap-header">
+      <nav class="navbar navbar-expand-md navbar-light py-3">
+        <div class="container">
+          <a class="navbar-brand" href="index.html"><img src="{{url_for('static',filename='images/award.png')}}" class="img-fluid" width="52px">
+            Health Care</a>
+          <!-- if logo is image enable this   
+        <a class="navbar-brand" href="#index.html">
+            <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+        </a> -->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+          </button>
+         
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="{{url_for('middle_ware')}}">Home</a>
+              </li>
+              <li class="nav-item" >
+                <a class="nav-link" data-toggle="modal" data-target="#myModal" href="#book">Book Appointment</a>
+              </li>
+            </ul>
+            </div>
+            <!-- User profile -->
+<div class="action">
+    <div class="profile" onclick="menuToggle();">
+          <img src="{{url_for('static',filename='images/user.png')}}" alt="">
+    </div>
+                    <!-- user account -->
+         <div class="menu">
+            <ul>
+                <li>
+                    <span class="material-icons icons-size">person</span>
+                    <a href="{{url_for('user_profile')}}">My Profile</a>
+                </li>
+                <li>
+                    <span class="material-icons icons-size">mode</span>
+                    <a href="{{url_for('index_view_appointment')}}">View Report</a>
+                </li>
+                <li>
+                    <span class="material-icons icons-size">account_balance</span>
+                    <a href="{{url_for('pl_home')}}">Logout</a>
+                </li>
+      
+            </ul>
+    </div>
+</div>
+<script>
+function menuToggle(){
+    const toggleMenu = document.querySelector('.menu');
+    toggleMenu.classList.toggle('active')
+}
+</script>
+<!-- End user profile -->
+            <!-- <a class="navbar-brand" onclick="menuToggle();"><img src="{{url_for('static',filename='images/user.png')}}" class="img-fluid" width="40px">
+            </a> -->
+              <!-- user account -->
+         
+          </a>
+        </div>
+      </nav>
+    </section>
+     
+    <!-- //modal-popup-->
+    <div class="selectpackage">
+    
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                &times;</button>
+              <h4 class="modal-title" id="myModalLabel">
+                Make An Appointment</h4>
+            </div>
+            <div class="modal-body packages">
+              <div class="appointment-form">
+                <form action="http://127.0.0.1:5001/pl_home" method="post">
+                  <div class="fields-grid">
+                    <div class="styled-input">
+    
+                      <div class="appointment-form-field">
+    
+                        <input type="text" name="name" placeholder="Full Name" required="">
+                      </div>
+                    </div>
+                    <div class="styled-input">
+    
+                      <div class="appointment-form-field">
+    
+                        <input type="phone" name="mobile" placeholder="Enter Your Number" required="">
+                      </div>
+                    </div>
+    
+                    <div class="styled-input">
+    
+                      <div class="appointment-form-field">
+    
+                        <input type="email" name="email" placeholder="Enter Your Email" required="">
+                      </div>
+                    </div>
+                    <div class="styled-input">
+    
+                      <div class="appointment-form-field">
+    
+                        <input type="date" name="date" placeholder="Set a Date" required="">
+                      </div>
+                    </div>
+                    <div class="styled-input">
+    
+                      <div class="appointment-form-field">
+    
+                        <select  name="gender" required="">
+                          <option >Gender*</option>
+                          <option >Male</option>
+                          <option >Female</option>
+                          <option >Others</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="styled-input">
+    
+                      <div class="appointment-form-field">
+    
+                        <input type="text" name="age" placeholder="Enter Your Age" required="">
+                      </div>
+                    </div>
+    
+                    <div class="styled-input">
+    
+                      <div class="appointment-form-field">
+    
+                        <input type="text" name="address" placeholder="Enter Your Address" required="">
+                      </div>
+                    </div>
+    
+                    <div class="styled-input">
+    
+                      <div class="appointment-form-field">
+    
+                        <input type="text" name="problem" placeholder="Tell Us Your Problem" required="">
+                      </div>
+                    </div>
+    
+                  </div>
+                  <div class="appointment-btn text-lg-right">
+                    <button type="submit" class="btn btn-style btn-primary mt-4">Book Appointment</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        $('#myModal').modal('show');
+      </script>
+    </div>
+    <!-- //modal-popup-->
+    
+          </div>
+        </div>
+        <!-- //modal-content -->
+      </div>
+      <!-- //modal-dialog -->
+    </div>
+    <!-- //Domain modal -->
+    
+    
+   
+    <script src="assets/js/jquery-3.3.1.min.js"></script>   
+    <!-- script for banner slider-->
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    </body>
+
+    </html>

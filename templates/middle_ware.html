@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+	<!-- <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/login.css')}}"> -->
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{{url_for('static',filename='css/style-starter.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,600,700&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style12.css')}}">
+
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style1-starter.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+
+
+<style>
+.btn {
+  background-color: Blue;
+  border: none;
+  color: white;
+  padding: 50px 50px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px 18px;
+  width:18%;
+  height: 18vh;
+  font-size: larger;
+  text-align: center;
+  
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+  color: antiquewhite;
+}
+@media screen {
+  .table-container{
+    margin-left: 6%;
+    margin-right: 6%;
+  }
+  .heading{
+    color: blue;
+  }
+  thead{
+    color: white;
+    background-color: blue;
+  }
+  .search_box{
+    border-radius: 10px;
+    height: 40px;
+    width: 180px;
+    border:2px solid blue;
+    float: right;
+    margin-bottom: 5px;
+  }
+  
+}
+</style>
+</head>
+<body style="width: 100%;">
+
+<!-- Navbar -->
+{% include 'middleware_nav.html' %}
+<!-- End navbar -->
+
+
+
+<center style="margin-top:2%">
+<a  data-toggle="modal" data-target="#myModal2" href='#book' class="btn">Billing</a>
+<a data-toggle="modal" data-target="#myModal3" href='#book' class="btn">Add Attendance</a>
+<button onclick="location.href='http://www.example.com'" class="btn"> Billing</button>
+<button onclick="location.href='http://www.example.com'" class="btn"> Billing</button>
+
+</center>
+
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalScrollableTitle">Billing</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="" method="post">
+            <div class="appointment-form-field">
+
+                <input type="text" name="name" placeholder=" Full Name" required="">
+              </div>
+              <div class="appointment-form-field">
+
+                <input type="text" name="mobile" placeholder="Phone Number" required="">
+              </div>
+              <div class="appointment-form-field">
+
+                <input type="text" name="email" placeholder="Email" required="">
+              </div>
+              <div class="appointment-form-field">
+
+                <input type="date" name="date" placeholder="Date" required="">
+              </div>
+              <div class="appointment-form-field">
+
+                <input type="text" name="address" placeholder="Address" required="">
+              </div>
+              <div class="appointment-form-field">
+
+                <input type="text" name="p_name" placeholder="Product Name" required="">
+              </div>
+              <div class="appointment-form-field">
+
+                <input type="text" name="p_id" placeholder="Product Id" required="">
+              </div>
+              <div class="appointment-form-field">
+
+                <input type="text" name="quantity" placeholder="Quantity" required="">
+              </div>
+              <div class="appointment-form-field">
+
+                <input type="text" name="price_unit" placeholder="Price" required="">
+              </div>
+
+                  
+        </div>
+     
+        <div class="modal-footer">
+          <button type="button"  data-dismiss="modal">Close</button>
+          <button type="submit" >Save changes</button>
+
+        </div>
+      
+      </div>
+    </div>
+  </div>
+</form>
+  <script>
+    $('#myModal2').modal('show');
+  </script>
+
+<!-- //modal-popup-->
+
+<!-- ------------------------------ For Attendance ------------------------------------ -->
+
+
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Attendance</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body"> 
+        <form action="http://127.0.0.1:5001/attendance" method="post">
+
+          <div class="appointment-form-field">
+
+            <input type="text" name="name" placeholder="Enter Name" required="">
+          </div>
+          
+            <div class="appointment-form-field">
+
+              <input type="text" id="currentDate" name="date" placeholder="Date" required="" readonly>
+            </div>
+
+            <script>
+              var today = new Date();
+              var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+              document.getElementById("currentDate").value = date;
+            </script>
+
+            <div class="appointment-form-field">
+
+              <select name="shift" >
+                <option >7am-3pm</option>
+                <option >3pm-11pm</option>
+                <option >11pm-7am</option>
+
+              </select>
+            </div>
+            <div class="appointment-form-field">
+
+              <input type="text" name="intime" id="currentTime" placeholder="In Time" required="" readonly>
+            </div>
+
+            <script>
+              var today = new Date();
+              var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                document.getElementById("currentTime").value = time;
+              </script>
+
+            <div class="appointment-form-field">
+
+              <input type="text" name="late" placeholder="Late" required="">
+            </div>
+            
+            
+
+                
+      </div>
+   
+      <div class="modal-footer">
+        <button type="button"  data-dismiss="modal">Close</button>
+        <button type="submit" style="width: 120px;height:40px;background-color:blue;color: white;border: none;border-radius: 6px;" >Save changes</button>
+
+      </div>
+    
+    </div>
+  </div>
+</div>
+</form>
+<script>
+  $('#myModal3').modal('show');
+</script>
+
+<!-- ----------------------------------- For Edit ----------------------------------------------- -->
+
+<!-- <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Attendance Out time</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body"> 
+        <form action="http://127.0.0.1:5001/attendance_edit" method="post">
+          {% for row in at %}
+
+          <div class="appointment-form-field">
+
+            <input type="text" name="name" value="{{row.name}}" placeholder="Enter Name" required="">
+          </div>
+          
+            <div class="appointment-form-field">
+
+              <input type="text" id="currentDate" value="{{row.date}}" name="date" placeholder="Date" required="" readonly>
+            </div>
+
+            
+
+            <div class="appointment-form-field">
+              <input type="text" name="shift" value="{{row.shift}}" id="currentTime" placeholder="Shift" required="" readonly>
+
+              
+            </div>
+            <div class="appointment-form-field">
+
+              <input type="text" name="intime" value="{{row.intime}}" id="currentTime" placeholder="In Time" required="" readonly>
+            </div>
+
+            <div class="appointment-form-field">
+
+              <input type="text" value="{{row.late}}" name="late" placeholder="Late" required="" readonly>
+            </div>
+            {% endfor %}
+            
+            <div class="appointment-form-field">
+
+              <input type="text" name="outtime" placeholder="Out Time" required="">
+            </div>
+            <div class="appointment-form-field">
+
+              <input type="text" name="earlyleaving" placeholder="Early Leaving" required="">
+            </div>
+            <div class="appointment-form-field">
+
+              <input type="text" name="overtime" placeholder="Overtime" required="">
+            </div>
+            <div class="appointment-form-field">
+
+              <input type="text" name="totaltime" placeholder="Total Work Time" required="">
+            </div>
+
+                
+      </div>
+   
+      <div class="modal-footer">
+        <button type="button"  data-dismiss="modal">Close</button>
+        <button type="submit" style="width: 120px;height:40px;background-color:blue;color: white;border: none;border-radius: 6px;" >Save changes</button>
+
+      </div>
+    
+    </div>
+  </div>
+</div>
+</form>
+<script>
+  $('#myModal4').modal('show');
+</script> -->
+
+
+
+
+<div class="table-container">
+  <div >
+    <input class="search_box" type="search" placeholder="Search Here"  >
+    </div>
+  <h1 class="heading">Attendance Details</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Shift Time</th>
+        <th>In Time</th>
+        <th>Late</th>
+        <th>Out Time</th>
+        <th>Early Leaving</th>
+        <th>Over Time</th>
+        <th>Total Work Time</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in att %}
+      <tr>
+        <td >{{row.name}}</td>
+        <td >{{row.date}}</td>
+        <td >{{row.shift}}</td>
+        <td >{{row.intime}}</td>
+        <td >{{row.late}}</td>
+        <td >{{row.outtime}}</td>
+        <td >{{row.earlyleaving}}</td>
+        <td >{{row.overtime}}</td>
+        <td >{{row.totaltime}}</td>
+        <td ><a  href="/attendance_edit/{{row.id}}">Edit</a></td>
+        <td ><a href="/attendance_delete/{{row.id}}">Delete</a></td>
+
+      </tr>
+      {% endfor %}
+      
+    </tbody>
+  </table>
+</div>
+
+<script src="{{url_for('static',filename='js/jquery-3.3.1.min.js')}}"></script>   
+	  <!-- script for banner slider-->
+	  <script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+
+
+</body>
+</html>

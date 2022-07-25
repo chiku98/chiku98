@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	font-weight: 100;
+	width: 100%;
+	background:rgb(204,204,204);
+	font-family: 'Roboto',sans-serif; 
+
+}
+h2,p {
+	margin: 0;
+}
+.page{
+	background: #fff;
+	display: block;
+	margin: 3rem auto 3rem auto;
+	position: relative;
+	box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+}
+.page[size="A4"] {
+	width: 21cm;
+	height: 29.7cm;
+	overflow-x:hidden;
+}
+/*top section*/
+.top-section{
+	color: #fff;
+	padding: 20px;
+	height: 115px;
+	background-color:#589d73;
+}
+.top-section h2{
+	font-size: 42px;
+	margin-bottom: 10px;
+	font-weight: 400;
+}
+.top-section .contact,
+.top-section .address{
+	width: 50%;
+	height: 100%;
+	float: left;
+}
+.top-section .address-content {
+	max-width: 275px;
+
+}
+.contact .contact-content {
+	max-width:220px;
+	float: right;
+	margin-top: 32px;
+}
+.contact-content .email,
+.contact-content .number {
+	display:block;
+}
+.contact-content .email span,
+.contact-content .number span {
+	float: right;
+	margin-left: 30px;
+}
+.bill-sec{
+	font-size: 16px;
+	font-family: 'Roboto',sans-serif;
+	margin-left: 10%;
+	margin-top: 5%;
+}
+.bill-value{
+	text-align: left;
+	/*border: 1px solid black;*/
+	padding-right: 100px;
+
+}
+.header{
+	margin-top: 10%;
+	margin-left: 10%;
+}
+.notice{
+	background-color:#dce594;
+	height: 200px;
+	width: 794px;
+	margin-top: 40%;
+	margin-left: 0%;
+	color: red;
+
+}
+.list{
+	font-size: 14px;
+	font-family: arial;
+
+}
+.list li{
+	line-height: 25px;
+}

@@ -1,0 +1,1313 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>Health care</title>
+	  <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}">
+	  <!----css3---->
+    <link rel="stylesheet" href="{{url_for('static',filename='css/custom.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/flaticon.css')}}">
+		<!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+	  <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='setting.css')}}" media="screen" />
+	  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800&family=Chivo:wght@300;400;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Fira+Sans:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+	  <!--fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" 
+    	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+      rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/animate.min.css')}}">	
+     <!-- Nav css  -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+     <!-- <link rel="stylesheet" href="{{url_for('static',filename='css/nav.css')}}"> -->
+     <style>
+       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+    margin:0; padding: 0;
+    box-sizing: border-box;
+    outline: none; border: none;
+    text-transform: capitalize;
+    transition: all .2s ease-out;
+    text-decoration: none;
+}
+
+.heading{
+    text-align: center;
+    padding-bottom: 2rem;
+    text-shadow: .4rem .4rem 0 rgba(0, 0, 0, .2);
+    text-transform: uppercase;
+    color:#444;
+    font-size: 5rem;
+    letter-spacing: .4rem;
+}
+
+.heading span{
+    text-transform: uppercase;
+    color:#16a085;
+}
+
+.nav_menu_btn{
+    display: inline-block;
+    margin-top: 1rem;
+    padding: .5rem;
+    padding-left: 1rem;
+    border:.2rem solid #16a085;
+    border-radius: .5rem;
+    box-shadow: .5rem .5rem 0 rgba(22, 160, 133, .2);
+    color:#16a085;
+    cursor: pointer;
+    font-size: 1.7rem;
+    background: #fff;
+}
+
+.nav_menu_btn span{
+    padding:.7rem 1rem;
+    border-radius: .5rem;
+    background: #16a085;
+    color:#fff;
+    margin-left: .5rem;
+}
+
+.nav_menu_btn:hover{
+    background: #16a085;
+    color:#fff;
+}
+
+.nav_menu_btn:hover span{
+    color: #16a085;
+    background:#fff;
+    margin-left: 1rem;
+}
+
+.main_nav{
+    padding:2rem 9%;
+    position: fixed;
+    top:0; left: 0; right: 0;
+    z-index: 1000;
+    box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+}
+
+.main_nav .logo{
+    font-size: 22px;
+    color: #444;
+}
+
+.main_nav .logo i{
+    color: #16a085;
+}
+
+.main_nav .navbar_menu a{
+    font-size: 18px;
+    color: #777;
+    margin-left: 2rem;
+}
+
+.main_nav .navbar_menu a:hover{
+    color: #16a085;
+}
+
+#nav_menu_btn{
+    font-size: 20px;
+    border-radius: .5rem;
+    background: #eee;
+    color:#16a085;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+
+
+/* media queries  */
+@media (max-width:991px){
+
+    .main_nav .navbar_menu a{
+        font-size: 55%;
+    }
+
+    .main_nav{
+        padding: 2rem;
+    }
+
+
+}
+
+@media (max-width:768px){
+
+    #nav_menu_btn{
+        display: initial;
+    }
+
+    .main_nav .navbar_menu{
+        position: absolute;
+        top:115%; right: 2rem;
+        border-radius: .5rem;
+        box-shadow: .5rem .5rem 0 rgba(22, 160, 133, .2);
+        width: 30rem;
+        border: .2rem solid #16a085;
+        background: #fff;
+        transform: scale(0);
+        opacity: 0;
+        transform-origin: top right;
+        transition: none;
+    }
+
+    .main_nav .navbar_menu.active{
+        transform: scale(0.5);
+        opacity: 1;
+        transition: .2s ease-out;
+    }
+
+    .main_nav .navbar_menu a{
+        font-size: 2rem;
+        display: block;
+        margin:2.5rem;
+    }
+
+}
+
+@media (max-width:450px){
+
+    .main_nav .navbar_menu a{
+        font-size: 20px;
+    }
+
+}
+     </style>
+     <!-- End of Nav css -->
+  </head>
+  <body>
+     <div class="nav_section">
+      <header class="main_nav">
+  
+          <a href="#" class="logo"> <i class="fas fa-heartbeat"></i> medcare. </a>
+  
+          <nav class="navbar_menu">
+            <a href="{{url_for('pl_home')}}">home</a>
+            <a href="{{('home')}}">book an appointment</a>
+            <a href="{{('login')}}">login</a>
+          </nav>
+  
+          <div id="nav_menu_btn" class="fas fa-bars"></div>
+
+      </header>
+    </div>
+    <div class="slider-section">
+      <!-- revolution slider -->
+      <section class="no-top no-bottom" aria-label="section-slider">
+        <!-- home -->
+        <div class="fullwidthbanner-container">
+          <div id="revolution-slider-half">
+            <ul>
+              <li data-transition="random" data-slotamount="10" data-masterspeed="1200" data-delay="5000">
+                <!--  BACKGROUND IMAGE -->
+                <!-- <a href="{{('appointment')}}"> -->
+                <img src="{{url_for('static',filename='images/bnnn.jpg')}}" alt="" data-start="0" data-bgposition="center center" data-kenburns="on" data-duration="10000" data-ease="Linear.easeNone" data-bgfit="100" data-bgfitend="100" data-bgpositionend="center center"/>
+                <div class="tp-caption slide-big-heading sft"
+                    data-x="center"
+                    data-y="160"
+                    data-speed="800"
+                    data-start="400"
+                    data-easing="easeInOutExpo"
+                    data-endspeed="450">
+                  <span style="color:#fd9b28;"> best of</span> business planning <BR>advisor & specialist 
+                </div>
+                <!-- <div class="tp-caption btn-slider sfb"
+                    data-x="center"
+                    data-y="300"
+                    data-speed="400"
+                    data-start="800"
+                    data-easing="easeInOutExpo">
+                  <span class="shine"></span>
+                  <a href="{{('appointment')}}" >Consult  now</a>
+
+                </div> -->
+              <!-- </a> -->
+
+              </li>
+              <li data-transition="random" data-slotamount="10" data-masterspeed="1200" data-delay="5000">
+                <!--  BACKGROUND IMAGE -->
+                <img data-href="{{url_for('appointment')}}" src="{{url_for('static',filename='images/billionphotos-2337387.jpg')}}" alt="" data-start="0" data-bgposition="center center" data-kenburns="on" data-duration="10000" data-ease="Linear.easeNone" data-bgfit="100" data-bgfitend="100" data-bgpositionend="center center"/>
+                  <div class="tp-caption slide-big-heading sft"
+                    data-x="center"
+                    data-y="160"
+                    data-speed="800"
+                    data-start="400"
+                    data-easing="easeInOutExpo"
+                    data-endspeed="450">
+                    <span style="color:#fd9b28;"> best of</span> business planning <BR>advisor & specialist 
+                  </div>
+                  <!-- <div class="tp-caption btn-slider sfb"
+                      data-x="center"
+                      data-y="300"
+                      data-speed="400"
+                      data-start="800"
+                      data-easing="easeInOutExpo"> -->
+                    <!-- <span class="shine"></span><a href="{{url_for('appointment')}}">  Consult right now</a> -->
+                  <!-- </div> -->
+              </li>   
+            </ul>
+            <div class="tp-bannertimer hide"></div>
+          </div>
+        </div>
+        <!-- home end -->
+      </section>
+      <div style="height: 10vh;width: 100%;background-color: rgb(111, 194, 213);">
+        <center>
+          <div class="d-grid gap-2">
+            <button  onclick="window.location.href='/appointment'" style="height: 8vh;width: 50%;margin-top: 6px;border-radius: 20px;" class="btn btn-primary" type="button">Consult Right Now</button>
+          </div>
+        </center>
+       
+       
+      </div>
+      <!-- revolution slider end -->
+    </div>
+    <section class="service what-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="about-info sec-padd text-center mb-5">
+                        <div class="section-title">
+                            <h2>industries</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                  <div class="we-do-item">
+                    <div class="we-icon">
+                      <i class="fas fa-plane-departure"></i>
+                  </div> 
+                  <div class="we-desc">
+                    <h4 class="we-title">Travel and Aviation Consulting</h4>
+                    <P>Company that offers design and build services for you from initial sketches to the final production.</p>
+                  </div>					  
+                </div>
+              </div>
+              <div class=" col-md-4 col-sm-6 col-xs-12">
+                <div class="we-do-item">
+                  <div class="we-icon">
+                    <i class="fas fa-chart-line"></i>
+                  </div> 
+                <div class="we-desc">
+                  <h4 class="we-title">
+                    Business Services
+                    Consulting
+                  </h4>
+                  <P>We consider all the drivers of change – from the ground up and we’ll motivate and support you to make the change.</p>
+                </div>					  
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <div class="we-do-item">
+                <div class="we-icon">
+                  <i class="fas fa-luggage-cart"></i>
+                </div> 
+                <div class="we-desc">
+                  <h4 class="we-title">
+                    Consumer Products
+                    Consulting
+                  </h4>
+                  <P>Design repeatable growth models and innovation pipelines that generate new products with higher potential and lower risks of failure.</p>
+                </div>					  
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="we-do-item">
+              <div class="we-icon">
+                <i class="fas fa-luggage-cart"></i>
+              </div> 
+              <div class="we-desc">
+                <h4 class="we-title">
+                  Financial Services
+                  Consulting
+                </h4>
+                <P>Design repeatable growth models and innovation pipelines that generate new products with higher potential and lower risks of failure.</p>
+              </div>					  
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="we-do-item">
+              <div class="we-icon">
+                <i class="fas fa-luggage-cart"></i>
+              </div> 
+              <div class="we-desc">
+                <h4 class="we-title">
+                  Energy and Environment
+                  Consulting
+                </h4>
+                <P>Scheduled transport operations, from broad market trends and strategy to the development of integrated commercial strategies..</p>
+              </div>					  
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="we-do-item">
+              <div class="we-icon">
+                <i class="fas fa-luggage-cart"></i>
+              </div> 
+              <div class="we-desc">
+                <h4 class="we-title">
+                  Surface Transport &
+                  Logistics Consulting
+                </h4>
+                <P>We work across all the major geographies, meaning we understand the underlying drivers in construction markets.</p>
+              </div>					  
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+	  <div class="fun-facts pt-70 pb-100">
+      <div class="container">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-12">
+            <div class="vc_custom_heading no_stripe text-center  d-md-block counter-head
+              text_align_left has_icon  mb-3">
+              <h4 style="font-size:31px;color: #ffffff;line-height:37px;text-align:center" 
+                class="consulting-custom-title">
+                  <mark>Busines</mark> 
+                  &amp; cumminatin skill
+              </h4>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2 col-6">
+            <div class="fun-facts-card">
+              <div class="content text-center">
+                <span class="counter">321</span>
+                <div class="counter-title">case Completed</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2  col-md-2 col-sm-4 col-6">
+            <div class="fun-facts-card">
+              <div class="content text-center">
+                <span class="counter">27 </span>
+                <div class="counter-title">Consultant</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2  col-md-2 col-sm-4 col-6">
+            <div class="fun-facts-card">
+              <div class="content text-center">
+                <span class="counter">125</span>
+                <div class="counter-title">Award Winning</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-4 col-6">
+            <div class="fun-facts-card">
+              <div class="content text-center">
+                <span class="counter">100</span><span class="percentage" style="font-size:36px;
+					   color:#fff; font-weight:600;">%<span>
+                <div class="counter-title">statified Customer</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="about-faq sec-padd py-5">
+    <div class="container">
+        <div class="section-title text-center mb-5">
+            <h2>about us &amp; faq's</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="about-info">
+                    <h4>We counsel our clients on their key strategic issues, leveraging our deep industry expertise 
+						          and using analytical rigor to help
+                    </h4>
+                    <br>
+                    <div class="text">
+                      <p>We counsel our clients on their key strategic issues, leveraging our deep industry expertise 
+                        and using analytical rigor to help them make informed decisions more quickly and solve their
+                        toughest and most critical business problems.<BR><BR>
+                        Founded in London in 1983 by three partners, we now employ more than 1,000 professionals worldwide. We advise and 
+                        support global companies that are leaders in their industries.
+                      </p>
+                    </div>
+                    <div class="link_btn">
+                        <a href="{{('appointment')}}" class="thm-btn">know more <i class="vc_btn3-icon fas fa-chevron-right"></i></a>
+                        <!--<div class="sign"><img src="images/resource/sign.jpg" alt=""></div>-->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+               <div id="main">
+
+<div class="accordion" id="faq">
+                    <div class="card">
+                        <div class="card-header" id="faqhead1">
+                            <a href="#" class="btn-header-link text-truncate" data-toggle="collapse" data-target="#faq1"
+                            aria-expanded="true" aria-controls="faq1">What does Consulting WP do</a>
+                        </div>
+
+                        <div id="faq1" class="collapse show" aria-labelledby="faqhead1" data-parent="#faq">
+                            <div class="card-body">
+                               We help entrepreneurs get ready to raise capital. Please note that we cannot help our clients raise capital. This usually consists of some or all of our services. This is a service that is heavily regulated.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="faqhead2">
+                            <a href="#" class=" btn-header-link text-wrap collapsed" data-toggle="collapse" data-target="#faq2"
+                            aria-expanded="true" aria-controls="faq2">Which geographies you have worked already?</a>
+                        </div>
+
+                        <div id="faq2" class="collapse" aria-labelledby="faqhead2" data-parent="#faq">
+                            <div class="card-body">
+                               We help entrepreneurs get ready to raise capital. Please note that we cannot help our clients raise capital. This usually consists of some or all of our services. This is a service that is heavily regulated.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="faqhead3">
+                            <a href="#" class=" btn-header-link text-wrap collapsed" data-toggle="collapse" data-target="#faq3"
+                            aria-expanded="true" aria-controls="faq3">What makes you special from others?</a>
+                        </div>
+
+                        <div id="faq3" class="collapse" aria-labelledby="faqhead3" data-parent="#faq">
+                            <div class="card-body">
+                                We help entrepreneurs get ready to raise capital. Please note that we cannot help our clients raise capital. This usually consists of some or all of our services. This is a service that is heavily regulated.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+ 
+  </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<section class="achivement-bg">
+<div class="container">
+   <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="about-info sec-padd text-center mb-5">
+                    <div class="section-title">
+                        <h2>testimonials</h2>
+                    </div>
+                </div>
+            </div>
+	  
+	  <div class="col-md-12">
+   <div class="slick-slider blog-slider">
+          <div>
+<div class="item text-white">
+                                <div class="success_items">
+                                    <div class="user-profile-test">
+                                        <a href="#"><img src="img/testimonial/1.jpg" alt="Success"
+										class="user_img img-fluid"></a>
+                                    </div>
+                                    <div class="text-md-left text-center">
+                                       <div class="info">
+                                      <h4 class="no_stripe">
+                                      <a href="" tabindex="0">
+                                    Amanda Seyfried  
+									</a>
+                                         </h4>
+                                        <div class="position">Sales &amp; Marketing</div>
+                                            <div class="company">Alien Ltd.</div>
+                                      <p>Consulting WP really helped us achieve our financial goals.
+									  The slick presentation along with fantastic readability ensures 
+									  that our financial standing is stable.</p>
+                    </div>
+                                    </div>
+                                </div>
+                            </div>
+	</div>
+    <div>
+	<div class="item text-white">
+                                <div class="success_items">
+                             
+                                    <div class="user-profile-test">
+                                        <a href="#">  <img src="img/testimonial/2.jpg" alt="Success"
+										class="user_img img-fluid"></a>
+                                    </div>
+                                    <div class="text-md-left text-center">
+                                        <div class="info">
+                                      <h4 class="no_stripe">
+                                      <a href="" tabindex="0">
+                                    Amanda Seyfried  
+									</a>
+                                         </h4>
+                                        <div class="position">Sales &amp; Marketing</div>
+                                            <div class="company">Alien Ltd.</div>
+                                      <p>Consulting WP really helped us achieve our financial goals.
+									  The slick presentation along with fantastic readability ensures 
+									  that our financial standing is stable.</p>
+                    </div>
+                                    </div>
+                                </div>
+                            </div>
+	</div>
+    <div>
+	  <div class="item text-white">
+                                <div class="success_items">
+                         
+                                    <div class="user-profile-test">
+                                         <a href="#"><img src="img/testimonial/3.jpg" alt="Success"
+										 class="user_img img-fluid"></a>
+                                    </div>
+                                    <div class="text-md-left text-center">
+                                         <div class="info">
+                                      <h4 class="no_stripe">
+                                      <a href="" tabindex="0">
+                                    Amanda Seyfried  
+									</a>
+                                         </h4>
+                                        <div class="position">Sales &amp; Marketing</div>
+                                            <div class="company">Alien Ltd.</div>
+                                      <p>Consulting WP really helped us achieve our financial goals.
+									  The slick presentation along with fantastic readability ensures 
+									  that our financial standing is stable.</p>
+                    </div>
+                                    </div>
+                                </div>
+                            </div>
+	</div>
+	    <div>
+	 <div class="item text-white">
+                                <div class="success_items">
+                               
+                                    <div class="user-profile-test">
+                                        <a href="#">  <img src="img/testimonial/4.jpg" alt="Success" 
+										class="user_img img-fluid"></a>
+                                    </div>
+                                    <div class="text-md-left text-center">
+                                        <div class="info">
+                                      <h4 class="no_stripe">
+                                      <a href="" tabindex="0">
+                                    Amanda Seyfried  
+									</a>
+                                         </h4>
+                                        <div class="position">Sales &amp; Marketing</div>
+                                            <div class="company">Alien Ltd.</div>
+                                      <p>Consulting WP really helped us achieve our financial goals.
+									  The slick presentation along with fantastic readability ensures 
+									  that our financial standing is stable.</p>
+                    </div>
+                                    </div>
+                                </div>
+                            </div>
+	</div>
+	  
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+
+
+	<section class="client-section bggray">
+<div class="container">
+    <div class="row">
+	  <div class="col-md-12">
+	    <div class="client-outer">
+	  <div class="slick-slider client-slider">
+          <div class="wow-outer">
+<div class="item wow slideInLeft"  data-wow-delay=".1s">
+            <img src="img/client/1.png" class="img-fluid" alt="Imageteam">
+        </div>
+				</div>
+				 <div class="wow-outer">
+<div class="item wow slideInLeft"  data-wow-delay=".3s">
+            <img src="img/client/2.png" class="img-fluid" alt="Imageteam">
+        </div>
+				</div>
+				<div class="wow-outer">
+<div class="item wow slideInLeft" data-wow-delay=".5s">
+            <img src="img/client/3.png" class="img-fluid" alt="Imageteam">
+        </div>
+				</div>
+					
+					<div class="wow-outer">
+             <div class="item wow slideInLeft" data-wow-delay=".9s">
+            <img src="img/client/5.png" class="img-fluid" alt="Imageteam">
+        </div>
+				</div>
+				<div class="wow-outer">
+             <div class="item wow slideInLeft" data-wow-delay=".10s">
+            <img src="img/client/6.png" class="img-fluid" alt="Imageteam">
+        </div>
+				</div>
+				
+				<div class="wow-outer">
+             <div class="item wow slideInLeft" data-wow-delay=".1s">
+            <img src="img/client/7.png" class="img-fluid" alt="Imageteam">
+        </div>
+				</div>
+            </div>
+	 </div>
+	</div>  
+	</div>
+</div>
+</section>
+<section class="parallax-bg">
+   <div class="container">
+      <div class="row">
+	     <div class="col-md-12">
+		    <div class="vc_custom_heading text_align_center">
+			<h4 style="font-size: 28px;color: #ffffff;line-height: 34px;text-align: center"
+			class="consulting-custom-title">To help entrepreneurs get their act together<br>
+<mark>before they talk to investors.</mark></h4></div>
+		 </div>
+	  </div>
+   </div>
+</section>
+	<section class="blog">
+ <div class="container-fluid">
+   <div class="row p-3-vh">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="about-info sec-padd text-center mb-5">
+                    <div class="section-title">
+                        <h2>company news</h2>
+                    </div>
+                </div>
+            </div>
+	  
+
+    <div class="col-md-3 wow-outer">
+      <div class="blogcolumn wow slideInRight" data-wow-delay=".1s">
+        <div class="imgtop">
+          <img src="img/blog/1.jpg" alt="" class="w-gallery-image">
+          <span class="tag">
+            Franching
+          </span>
+        </div>
+        <div class="blogcont">
+          <div class="headingblog">
+                      <a href="#">A digital prescription for the pharma industry</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 wow-outer">
+      <div class="blogcolumn wow slideInRight"  data-wow-delay=".3s">
+        <div class="imgtop">
+          <img src="img/blog/2.jpg" alt="" class="w-gallery-image">
+          <span class="tag">
+            economics
+          </span>
+        </div>
+        <div class="blogcont">
+          <div class="headingblog">
+          <a href="#">Harvest great ideas from your company’s best assets</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 wow-outer">
+      <div class="blogcolumn wow slideInRight"  data-wow-delay=".6s">
+        <div class="imgtop">
+          <img src="img/blog/3.jpg" alt="" class="w-gallery-image">
+          <span class="tag">
+            innovation
+          </span>
+        </div>
+        <div class="blogcont">
+  
+          <div class="headingblog">
+                      <a href="#">Strategic and commercial approach with issues</a>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+	
+	    <div class="col-md-3 wow-outer">
+      <div class="blogcolumn wow slideInRight"  data-wow-delay=".6s">
+        <div class="imgtop">
+          <img src="img/blog/4.jpg" alt="" class="w-gallery-image">
+          <span class="tag">
+            Research
+          </span>
+        </div>
+        <div class="blogcont">
+
+          <div class="headingblog">
+                      <a href="#">Seven weeks working ‘pro bono’ with a charity</a>
+          </div>
+     
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </div>
+</section>
+
+<footer id="footer" class="footer style_1">
+                
+  <div class="widgets_row">
+<div class="container">
+<div class="footer_widgets">
+<div class="row">
+<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+<div class="footer_logo">
+<a href="index.php" class="mb-3 d-flex">
+<img src="img/logo.svg" alt="" width="170px;">
+</a>
+<p>Consulting WP - Before we talk destination, we shine a spotlight across your organization
+to fully understand its people, processes, and technology.
+
+Consulting WordPress theme / Finance WordPress theme / Business WordPress theme</p>
+</div>
+                                                                                                                                                                                                                                                                                      </div>
+<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                          
+<section id="recent-posts-4" class="widget widget_recent_entries">
+<h4 class="widget_title">recent news</h4>
+<ul>
+<li>
+<a href="">A digital prescription for the pharma industry</a>
+<span class="post-date">September 3, 2021</span>
+</li>
+<li>
+<a href="">Harvest great ideas from your company best assets</a>
+<span class="post-date">August 25, 2021</span>
+</li>
+</ul>
+</section>
+</div>
+<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+<section id="nav_menu-2" class="widget widget_nav_menu">
+<h4 class="widget_title">extra links</h4>
+<div class="menu-extra-links-container">
+<ul id="menu-extra-links" class="menu">
+<li class="menu-item ">
+<a href="#">About</a></li>
+<li  class="menu-item">
+<a href="#">News</a></li>
+<li  class="menu-item">
+<a href="#">Contacts</a></li>
+<li  class="menu-item">
+<a href="#">Testimonials</a></li>
+<li  class="menu-item">
+<a href="#">Typography</a></li>
+<li class="menu-item">
+<a href="#">Services</a></li>
+<li  class="menu-item">
+<a href="#">Careers</a></li>
+<li class="menu-item">
+<a href="#">Our team</a></li>
+<li  class="menu-item">
+<a href="#">Shop</a></li>
+<li  class="menu-item">
+<a href="#">Our approach</a></li>
+</ul></div></section>   
+</div>
+<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+<section class="form_widget">
+<h4 class="widget_title">subscribe</h4>
+<form class="" method="post">
+<div class="mc4wp-form-fields">
+<div class="input-group mb-3">
+<input type="email" class="form-control" placeholder="Enter your email" required="">
+<span class="input-group-btn">
+<button class="btn" title="submit" type=""><i class="far fa-envelope"></i></button>
+</span>
+</div>
+
+<p>Get latest updates and offers.</p>
+</div>
+</form>
+</section> 
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="copyright_row">
+<div class="container">
+<div class="copyright_row_wr">
+<div class="socials">
+<ul>
+<li>
+   <a href="" target="_blank" class="social-facebook">
+              <i class="fab fa-facebook-f"></i>
+          </a>
+      </li>
+       <li>
+          <a href="" target="_blank" class="social-twitter">
+              <i class="fab fa-twitter"></i>
+          </a>
+      </li>
+        </ul>
+</div>
+<div class="copyright">
+&copy 2022 <a href="" target="_blank">
+Consulting WordPress</a> Design by <a href="" 
+target="_blank">1weblab</a></div>
+              </div>
+</div>
+</div>
+</footer>
+
+
+<a id="scrollUp" href="#top" style="position: fixed; z-index: 2147483647; display: block;">
+<i class="fas fa-long-arrow-alt-up"></i></a>
+
+<!---
+<a href="https://api.whatsapp.com/send?phone=919312812&text=Hello." class="float" target="_blank">
+<img src="img/whatsapp-button.png" class="img-fluid"/>
+</a>
+---->
+
+<a class='blantershow-chat' href="https://api.whatsapp.com/send?phone=8287657228&text=if you have any query please contact us ?." title='Show Chat'>
+<svg width="20" viewBox="0 0 24 24"><defs/>
+  <path fill="#eceff1" d="M20.5 3.4A12.1 12.1 0 0012 0 12 12 0 001.7 17.8L0 24l6.3-1.7c2.8 1.5 5 1.4 5.8 1.5a12 12 0 008.4-20.3z"/>
+  <path fill="#4caf50" d="M12 21.8c-3.1 0-5.2-1.6-5.4-1.6l-3.7 1 1-3.7-.3-.4A9.9 9.9 0 012.1 12a10 10 0 0117-7 9.9 9.9 0 01-7 16.9z"/>
+  <path fill="#fafafa" d="M17.5 14.3c-.3 0-1.8-.8-2-.9-.7-.2-.5 0-1.7 1.3-.1.2-.3.2-.6.1s-1.3-.5-2.4-1.5a9 9 0 01-1.7-2c-.3-.6.4-.6 1-1.7l-.1-.5-1-2.2c-.2-.6-.4-.5-.6-.5-.6 0-1 0-1.4.3-1.6 1.8-1.2 3.6.2 5.6 2.7 3.5 4.2 4.2 6.8 5 .7.3 1.4.3 1.9.2.6 0 1.7-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/>
+</svg> Chat with Us</a>
+
+
+
+     <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{{url_for('static',filename='js/jquery-3.3.1.slim.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js/popper.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js/jquery-3.3.1.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js/js/wow.min.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static',filename='js/jquery.themepunch.revolution.min.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static',filename='js/jquery.themepunch.tools.min.js')}}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"></script>
+    <script type="text/javascript" src="{{url_for('static',filename='js/jquery.counterup.min.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static',filename='js/jquery.waypoints.min.js')}}"></script>
+  
+  <script>
+         $(document).ready(function($) {
+              var $element = $('.counter');
+         if ($element.length > 0) {
+             $element.counterUp({
+                 delay: 10,
+                 time: 1000
+             });
+         }
+         });
+     </script>
+    
+          <script>
+ $('.testimonial-slider').slick({
+   slidesToShow:3,
+   dots:false,
+   arrows: true,
+   autoplay:false,
+   autoplaySpeed:3000,
+   prevArrow: '<i class="fas fa-chevron-left prev"></i>',
+   nextArrow: '<i class="fas fa-chevron-right next"></i>',
+   swipe: true,
+     swipeToSlide: true,
+    responsive: [{
+       breakpoint: 1024,
+       settings: {
+         slidesToShow:2,
+         slidesToScroll: 1,
+         // centerMode: true,
+       }
+     }, {
+       breakpoint: 800,
+       settings: {
+         slidesToShow:2,
+         slidesToScroll: 2,
+         dots:false,
+         infinite: true,
+ 
+       }
+     },  {
+       breakpoint: 480,
+       settings: {
+         slidesToShow: 1,
+         slidesToScroll: 1,
+         dots:false,
+         infinite: true,
+         autoplay: true,
+         autoplaySpeed: 2000,
+       }
+     }]
+ 
+ 
+ });
+ 
+   </script>
+     
+        <script>
+ $('.client-slider').slick({
+   slidesToShow:6,
+   dots:false,
+   arrows: true,
+   autoplay:false,
+   autoplaySpeed:3000,
+   prevArrow: '<i class="fas fa-chevron-left prev"></i>',
+   nextArrow: '<i class="fas fa-chevron-right next"></i>',
+   swipe: true,
+     swipeToSlide: true,
+    responsive: [{
+       breakpoint: 1024,
+       settings: {
+         slidesToShow:4,
+         slidesToScroll: 1,
+         // centerMode: true,
+       }
+     }, {
+       breakpoint: 800,
+       settings: {
+         slidesToShow:3,
+         slidesToScroll: 2,
+         dots:false,
+         infinite: true,
+ 
+       }
+     },  {
+       breakpoint: 480,
+       settings: {
+         slidesToShow: 2,
+         slidesToScroll: 1,
+         dots:false,
+         infinite: true,
+         autoplay: true,
+         autoplaySpeed: 2000,
+       }
+     }]
+ 
+ 
+ });
+ 
+   </script>
+   
+        <script>
+ $('.project-slider').slick({
+   slidesToShow:4,
+   dots:false,
+   arrows: true,
+   autoplay:false,
+   autoplaySpeed:3000,
+   prevArrow: '<i class="fas fa-chevron-left prev"></i>',
+   nextArrow: '<i class="fas fa-chevron-right next"></i>',
+   swipe: true,
+     swipeToSlide: true,
+    responsive: [{
+       breakpoint: 1024,
+       settings: {
+         slidesToShow:3,
+         slidesToScroll: 1,
+         // centerMode: true,
+       }
+     }, {
+       breakpoint: 800,
+       settings: {
+         slidesToShow:2,
+         slidesToScroll: 2,
+         dots:false,
+         infinite: true,
+ 
+       }
+     },  {
+       breakpoint: 480,
+       settings: {
+         slidesToShow: 1,
+         slidesToScroll: 1,
+         dots:false,
+         infinite: true,
+         autoplay: true,
+         autoplaySpeed: 2000,
+       }
+     }]
+ 
+ 
+ });
+ 
+   </script>
+   
+   
+ 
+    
+    <script src="js/wow.min.js"></script>
+               <script>
+               new WOW().init();
+               </script>
+   
+     
+   
+    <script>
+ $('.blog-slider').slick({
+     speed: 500,
+     slidesToShow:2,
+     slidesToScroll:1,
+     autoplay: true,
+     autoplaySpeed: 2000,
+     dots:true,
+     responsive: [{
+       breakpoint: 1024,
+       settings: {
+         slidesToShow: 1,
+         slidesToScroll: 1,
+         // centerMode: true,
+       }
+     }, {
+       breakpoint: 800,
+       settings: {
+         slidesToShow: 1,
+         slidesToScroll: 2,
+         dots:false,
+         infinite: true,
+ 
+       }
+     },  {
+       breakpoint: 480,
+       settings: {
+         slidesToShow: 1,
+         slidesToScroll: 1,
+         dots:false,
+         infinite: true,
+         autoplay: true,
+         autoplaySpeed: 2000,
+       }
+     }]
+ });
+   </script>
+   
+     
+ 
+   
+   
+ <script>
+     $(document).ready(function(){
+      $(window).scroll(function(){//scroll--top---indicator---arrow-jquery----//
+        if($(window).scrollTop() > 600){//---position---600----px scroll-----//
+          $("#scrollUp").fadeIn();
+        }
+        else{
+          $("#scrollUp").css("display","none");
+        }
+      });
+   });
+    
+    </script>
+   
+ 
+ 
+ 
+       <script>
+  $(document).ready(function(){
+        $(window).scroll(function(){
+     if($(window).scrollTop() < 90){ //-navbar-----scrolltop---fixed---jquery--/
+       $('#navigation').removeClass('navbar-scroll');
+     } 
+     else {
+        $('#navigation').addClass('navbar-scroll');
+     }
+ });
+ 
+  });
+ 
+ </script>
+ 
+ 
+ 
+   
+   
+ 
+ <script type="text/javascript">
+         jQuery(document).ready(function() {
+              // revolution slider
+         var revapi;
+         revapi = jQuery( '#revolution-slider-half' )
+             .revolution( {
+                 delay:9000,
+                 startwidth:1170,
+                 startheight:570,
+                 onHoverStop: "on",
+                 thumbWidth: 100,
+                 thumbHeight: 50,
+                 thumbAmount: 3,
+                 touchenabled: "on",
+                 stopAtSlide: -1,
+                 stopAfterLoops: -1,
+                 touchenabled: "on",
+                 navigationType:"none",
+                 navigationArrows:"solo",
+                 navigationStyle:"preview1",
+                 touchenabled:"on",
+                 onHoverStop:"on",
+                 swipe_velocity: 0.7,
+                 swipe_min_touches: 1,
+                 swipe_max_touches: 1,
+                 drag_block_vertical: false,                                 
+                 keyboardNavigation:"on",
+                 navigationHAlign:"center",
+                 navigationVAlign:"bottom",
+                 navigationHOffset:0,
+                 navigationVOffset:20,
+                 soloArrowLeftHalign:"left",
+                 soloArrowLeftValign:"center",
+                 soloArrowLeftHOffset:20,
+                 soloArrowLeftVOffset:0,
+                 soloArrowRightHalign:"right",
+                 soloArrowRightValign:"center",
+                 soloArrowRightHOffset:20,
+                 soloArrowRightVOffset:0,
+                 dottedOverlay: "",
+                 fullWidth: "on",
+                 stopAfterLoops:0,
+                 stopAtSlide:1,
+                 shadow: 0
+             } );
+ 
+             revapi = jQuery( '#revolution-slider-full' )
+             .revolution( {
+                 delay:9000,
+                 startwidth:960,
+                 startheight:630,
+                 onHoverStop: "on",
+                 thumbWidth: 100,
+                 thumbHeight: 50,
+                 thumbAmount: 3,
+                 touchenabled: "on",
+                 stopAtSlide: -1,
+                 stopAfterLoops: -1,
+                 touchenabled: "on",
+                 navigationType:"none",
+                 navigationArrows:"solo",
+                 navigationStyle:"preview1",
+                 touchenabled:"on",
+                 onHoverStop:"on",
+                 swipe_velocity: 0.7,
+                 swipe_min_touches: 1,
+                 swipe_max_touches: 1,
+                 drag_block_vertical: false,                                 
+                 keyboardNavigation:"on",
+                 navigationHAlign:"center",
+                 navigationVAlign:"bottom",
+                 navigationHOffset:0,
+                 navigationVOffset:20,
+                 soloArrowLeftHalign:"left",
+                 soloArrowLeftValign:"center",
+                 soloArrowLeftHOffset:20,
+                 soloArrowLeftVOffset:0,
+                 soloArrowRightHalign:"right",
+                 soloArrowRightValign:"center",
+                 soloArrowRightHOffset:20,
+                 soloArrowRightVOffset:0,
+                 dottedOverlay: "",
+                 fullWidth: "on",
+                 fullScreen:"on",
+                 stopAfterLoops:0,
+                 stopAtSlide:1,
+                 shadow: 0
+             } );
+ 
+             // revolution slider ver 2
+             var revext=jQuery;
+             var revapi;
+             revext(document).ready(function() {
+                 if(revext("#rev-commerce").revolution == undefined){
+                     revslider_showDoubleJqueryError("#rev-commerce");
+                 }else{
+                         revapi = revext("#rev-commerce").show().revolution({
+                         sliderType:"standard",
+                         jsFileLocation:"revolution/js/",
+                         sliderLayout:"auto",
+                         dottedOverlay:"none",
+                         delay:9000,
+                         navigation: {
+                         keyboardNavigation:"off",
+                         keyboard_direction: "horizontal",
+                         mouseScrollNavigation:"off",
+                         mouseScrollReverse:"default",
+                         onHoverStop:"on",
+                         touch:{
+                         touchenabled:"on",
+                         swipe_threshold: 75,
+                         swipe_min_touches: 50,
+                         swipe_direction: "horizontal",
+                         drag_block_vertical: false
+                         }
+                         ,
+                         arrows: {
+                         style:"gyges",
+                         enable:true,
+                         hide_onmobile:false,
+                         hide_onleave:false,
+                         tmp:'',
+                         left: {
+                         h_align:"right",
+                         v_align:"bottom",
+                         h_offset:160,
+                         v_offset:0
+                         },
+                         right: {
+                         h_align:"right",
+                         v_align:"bottom",
+                         h_offset:80,
+                         v_offset:0
+                         }
+                         }
+                         },
+                         responsiveLevels:[1240,1024,778,480],
+                         visibilityLevels:[1240,1024,778,480],
+                         gridwidth:[1200,1024,778,480],
+                         gridheight:[600,600,600,600],
+                         lazyType:"single",
+                         parallax: {
+                         type:"scroll",
+                         origo:"slidercenter",
+                         speed:400,
+                         levels:[5,10,15,20,25,30,35,40,45,46,47,48,49,50,51,55],
+                         type:"scroll",
+                         },
+                         shadow:0,
+                         spinner:"off",
+                         stopLoop:"off",
+                         stopAfterLoops:-1,
+                         stopAtSlide:-1,
+                         shuffle:"off",
+                         autoHeight:"off",
+                         disableProgressBar:"on",
+                         hideThumbsOnMobile:"off",
+                         hideSliderAtLimit:0,
+                         hideCaptionAtLimit:0,
+                         hideAllCaptionAtLilmit:0,
+                         debugMode:false,
+                         fallbacks: {
+                         simplifyAll:"off",
+                         nextSlideOnWindowFocus:"off",
+                         disableFocusListener:false,
+                         }
+                       });
+                     }
+                 });
+ 
+         });
+       </script>
+      <script src="{{url_for('static',filename='js/nav.js')}}"></script>
+
+ 
+</body>
+</html>
+

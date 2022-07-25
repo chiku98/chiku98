@@ -1,0 +1,589 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Health cares</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Muli:400,600,700&display=swap" rel="stylesheet">
+
+  <!-- Template CSS -->
+  <!-- <link rel="stylesheet" href="{{url_for('static',filename='css/style-starter.css')}}"> -->
+  <!-- <link rel="stylesheet" href="{{url_for('static',filename='css/style12.css')}}"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+    rel="stylesheet">
+  <link rel="stylesheet" href="{{url_for('static',filename='css/style-starter.css')}}">
+  <link rel="stylesheet" href="{{url_for('static',filename='css/style1-starter.css')}}">
+  <!-- <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}"> -->
+
+  <script src="https://kit.fontawesome.com/88e143eff2.js" crossorigin="anonymous"></script>
+
+  <style>
+    @media screen {
+
+      .ed-icon {
+        justify-content: space-between;
+        display: flex;
+        margin-left: 10%;
+        margin-right: 10%;
+      }
+
+      .card-1 {
+        background-color: blue;
+        height: 100px;
+        width: 300px;
+        text-align: center;
+        color: white;
+        border-radius: 25px;
+        margin-top: 30px;
+      }
+
+      .text {
+        color: antiquewhite;
+        /* padding-top: 12px; */
+        /* font */
+
+      }
+
+      .banner {
+        height: 40px;
+        margin-top: 40px;
+        color: blue;
+      }
+
+      /* .av_doc{
+    height:40vh ;
+    background-color: blue;
+  } */
+      .card-2 {
+        margin-top: 60px;
+        margin-left: 10%;
+        height: 40vh;
+        width: 12%;
+        background-color: azure;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        border-radius: 10px;
+
+      }
+
+      .img {
+        margin-top: 10px;
+        height: 120px;
+        width: 120px;
+        padding: 6px;
+        border-radius: 50%;
+        border: 3px solid green;
+      }
+
+      .available_doctors {
+        text-align: center;
+      }
+
+      .av_doc_name {
+        color: blue;
+        font-size: large;
+        font-weight: bold;
+      }
+
+      .av_doc_prof {
+        color: blue;
+        font-style: italic;
+        font-weight: bold;
+      }
+
+      .status {
+        padding-top: 10px;
+        margin-top: 28px;
+        font-size: larger;
+        font-weight: bolder;
+        color: green;
+        text-transform: uppercase;
+        border-top: 3px dashed;
+      }
+
+      .search_box {
+        margin-right: 10%;
+        float: right;
+      }
+
+      .search {
+        height: 36px;
+        width: 250px;
+        border-radius: 20px;
+      }
+
+      .search_btn {
+        border-radius: 50%;
+        background-color: blue;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  
+<!-- Navbar -->
+<!-- End navbar -->
+
+  {% for row in slider %}
+
+  <section class="w3l-main-slider" id="home">
+{% include 'healthnavbar2.html' %}
+
+    <!-- main-slider -->
+    <div class="companies20-content">
+      <div class="owl-one owl-carousel owl-theme">
+
+        <div class="item" style="background-image: url('/static/uploads/{{row.sl1}}');">
+          <li>
+            <div class="slider-info banner-view bg bg2">
+              <div class="banner-info" >
+                <div class="container">
+                  <div class="banner-info-bg">
+                    <h5>We Provide total Health care solution</h5>
+                    <p>{{row.content_sl1}}</p>
+
+                    <a class="btn btn-style btn-style-outline mt-sm-5 mt-4" href="{{'services'}}"> Our Services</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </div>
+
+
+        <div class="item" >
+          <li>
+            <div class="slider-info  banner-view banner-top1 bg bg2" style="background-image: url('/static/uploads/{{row.sl2}}');">
+              <div class="banner-info">
+                <div class="container">
+                  <div class="banner-info-bg" >
+                    <h5>Helping you to stay Happy one</h5>
+                    <p>{{row.content_sl2}}</p>
+                    <a class="btn btn-style btn-style-outline mt-sm-5 mt-4" href="{{'services'}}"> Our Services</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </div>
+       
+
+        <div class="item" >
+          <li>
+            <div class="slider-info banner-view banner-top2 bg bg2" style="background-image: url('/static/uploads/{{row.sl3}}');">
+              <div class="banner-info">
+                <div class="container">
+                  <div class="banner-info-bg">
+                    <h5>1 Lakh+ Patients trusted in our Hospital.</h5>
+                    <p>{{row.content_sl3}}</p>
+                    <a class="btn btn-style btn-style-outline mt-sm-5 mt-4" href="{{'services'}}"> Our Services</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </div>
+       
+
+        <div class="item" >
+          <li>
+            <div class="slider-info banner-view banner-top3 bg bg2" style="background-image: url('/static/uploads/{{row.sl4}}');">
+              <div class="banner-info">
+                <div class="container">
+                  <div class="banner-info-bg">
+                    <h5>The Largest and most respected Agencies</h5>
+                    <p>{{row.content_sl4}}</p>
+                    <a class="btn btn-style btn-style-outline mt-sm-5 mt-4" href="{{'services'}}"> Our Services</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!-- /main-slider -->
+  </section>
+  {% endfor %}
+
+  <!-- -------------------for slot booking-------------- -->
+
+  <marquee class="morque" style="background-color: rgb(19, 19, 242);color: antiquewhite;font-size: larger;" width="100%"
+    direction="left" scrollamount="20" behavior="alternate" height="30px">
+    <p style="color: antiquewhite;letter-spacing: 12px;font-weight: bolder;text-transform: uppercase;"> ONLINE OPD SLOT
+      AVAILABILITY </p>
+  </marquee>
+  <!-- <center><h1 style="border: 2px solid blue;width: 25%;">Covid 19 Updates</h1></center> <br> -->
+  <section class="ed-icon">
+
+    <div class="card-1">
+      <h2 id="cases" class="text" style="padding-top: 20px;">{{sl.total_slot}}</h2>
+      <h3 class="text" style="font-size: medium;">Total OPD Slots</h3>
+    </div>
+    <div class="card-1">
+      <h2 id="recovered" class="text" style="padding-top: 20px;">{{total.no_of_rows}}</h2>
+      <h3 class="text" style="font-size: medium;">Slot Booked</h3>
+    </div>
+    <div class="card-1">
+      <h2 id="deaths" class="text" style="padding-top: 20px;">{{sl.total_slot - total.no_of_rows}}</h2>
+      <h3 class="text" style="font-size: medium;">Available OPD Slots</h3>
+    </div>
+  </section>
+
+  <!-- ---------------------end slot booking--------------------- -->
+
+  <!-- w3l-features-photo-7 -->
+  <section class="w3l-features-photo-7 py-5">
+    <div class="w3l-features-photo-7_sur py-lg-5 py-sm-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 w3l-features-photo-7_top-left">
+            <h2>Dr.Thomas Saint</h2>
+            <p class="mb-lg-5 mb-4">Doctor of Transplant Surgery (PHD)</p>
+            <h4>I Offer a full range of Professional mental Health services to children, Adults,
+              Couples, and Families.</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. orci urna. In et augue ornare,
+              tempor massa in, luctus sapien. Proin a diam et dui fermentum dolor molestie vel id
+              neque. Donec sed tempus enim, a congue risus. Pellen tesqu
+            </p>
+            <div class="feat_top">
+              
+              <div class="w3l-features-photo-7-box">
+                <div class="icon">
+                  <img src="{{url_for('static',filename='images/heart.png')}}" class="img-fluid" />
+                </div>
+                <div class="info-feature">
+                  <h5 class="w3l-features-photo-7-box-txt"><a href="#url">Heart Attack</a></h5>
+                  <p>Proin a diam et dui elit, orci urna vel id neque. Donec sed enim</p>
+                </div>
+              </div>
+              <div class="w3l-features-photo-7-box">
+                <div class="icon">
+                  <img src="{{url_for('static',filename='images/icon1.png')}}" class="img-fluid" />
+                </div>
+                <div class="info-feature">
+                  <h5 class="w3l-features-photo-7-box-txt"><a href="#url">Transplant Surgery</a></h5>
+                  <p>Proin a diam et dui elit, orci urna vel id neque. Donec sed enim</p>
+                </div>
+              </div>
+              <div class="w3l-features-photo-7-box">
+                <div class="icon">
+                  <img src="{{url_for('static',filename='images/sthethoscope.png')}}" class="img-fluid" />
+                </div>
+                <div class="info-feature">
+                  <h5 class="w3l-features-photo-7-box-txt"><a href="#url">Surgery specialist</a></h5>
+                  <p>Proin a diam et dui elit, orci urna vel id neque. Donec sed enim</p>
+                </div>
+              </div>
+              <div class="w3l-features-photo-7-box">
+                <div class="icon">
+                  <img src="{{url_for('static',filename='images/ambulance.png')}}" class="img-fluid" />
+                </div>
+                <div class="info-feature">
+                  <h5 class="w3l-features-photo-7-box-txt"><a href="#url">Physiotheraphy</a></h5>
+                  <p>Proin a diam et dui elit, orci urna vel id neque. Donec sed enim</p>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          <div class="col-lg-4 w3l-features-photo-7_top-right mt-lg-0 mt-4">
+            <img src="{{url_for('static',filename='images/doctor1.jpg')}}" class="img-fluid" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- //w3l-features-photo-7 -->
+  <section class="w3l-video-sec">
+    <div class="video-inner py-5">
+      <div class="overlay1 py-lg-5 py-sm-3">
+        <div class="container">
+          <div class="video-content">
+            <img src="{{url_for('static',filename='images/heart-big.png')}}" class="img-fluid" alt="" />
+            <h4><a href="#url">We Provide High Quality Services.</a></h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed obcaecati natus illum, placeat nam
+              consequatur! Proin a diam et dui fermentum dolor.</p>
+            <a href="#notify" class="play-button btn"><span class="fa fa-play pl-1" aria-hidden="true">
+
+              </span></a>
+
+            <!-- notify-popup-->
+            <div id="notify" class="notify-pop-overlay">
+              <div class="notify-popup">
+                <h5>Excellent Health Care Systems</h5>
+                <iframe src="https://player.vimeo.com/video/180825357" frameborder="0" allow="autoplay; fullscreen"
+                  allowfullscreen></iframe>
+                <a class="close" href="#close">&times;</a>
+              </div>
+            </div>
+            <!-- //notify-popup -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- services page block 1 -->
+  <section class="w3l-features py-5">
+    <div class="container py-lg-5 py-3">
+      <div class="row main-cont-wthree-2">
+        <div class="col-lg-6 feature-grid-right">
+          <img src="{{url_for('static',filename='images/healthcare.jpg')}}" class="img-fluid" alt="healthcare">
+        </div>
+        <div class="col-lg-6 feature-grid-left mt-lg-0 mt-sm-5 mt-4">
+          <h4 class="title-left">We are Providing Excellent Health Care</h4>
+          <p class="text-para">Curabitur id gravida risus. Fusce eget ex fermentum, ultricies nisi ac sed, lacinia est.
+            Quisque ut lectus consequat, venenatis eros et, commodo risus. Nullam sit amet laoreet elit. </p>
+          <div class="stats_main text-center">
+            <div class="w3l-stats">
+              <div class="">
+                <img src="{{url_for('static',filename='images/patients.png')}}" class="img-fluid">
+              </div>
+              <div class="info-feature mt-3">
+                <h5 class="w3l-stats-txt"><a href="#url">1,754</a></h5>
+                <p class="stats-text">Patients</p>
+              </div>
+            </div>
+            <div class="w3l-stats">
+              <div class="">
+                <img src="{{url_for('static',filename='images/services.png')}}" class="img-fluid">
+              </div>
+              <div class="info-feature mt-3">
+                <h5 class="w3l-stats-txt"><a href="#url">457</a></h5>
+                <p class="stats-text">Services</p>
+              </div>
+            </div>
+            <div class="w3l-stats">
+              <div class="">
+                <img src="{{url_for('static',filename='images/award.png')}}" class="img-fluid">
+              </div>
+              <div class="info-feature mt-3">
+                <h5 class="w3l-stats-txt"><a href="#url">1,395</a></h5>
+                <p class="stats-text">Awards</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- services page block 1 -->
+  <section class="w3l-apply-6" id="appointment">
+    <!-- /apply-6-->
+    <div class="apply-info py-5">
+      <div class="container py-lg-5 py-sm-3">
+        <div class="apply-grids-info row">
+          <div class="apply-gd-left col-lg-5">
+            <h4>Make an appointment</h4>
+            <p class="para-apply">We will send you a confirmation within 24 hours.
+              <br><strong>Emergency?</strong> Call 1-2554-2356-33
+            </p>
+            <div class="mt-lg-5 mt-4">
+              <div class="sub-apply mt-5">
+                <div class="apply-sec-info">
+                  <div class="icon">
+                    <img src="{{url_for('static',filename='images/icon1.png')}}" class="img-fluid">
+                  </div>
+                  <div class="appyl-sub-icon-info">
+                    <h5><a href="blog-single.html">Immune system</a></h5>
+                    <p>Lorem ipsum dolor sit amet,Ea a diam et dui elit, orci urna vel id neque. Donec
+                      sed enim.</p>
+                    <a href="#url" class="learn">Learn More <i class="fa fa-long-arrow-right ml-2"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="sub-apply mt-5">
+                <div class="apply-sec-info">
+                  <div class="icon">
+                    <img src="{{url_for('static',filename='images/sthethoscope.png')}}" class="img-fluid">
+                  </div>
+                  <div class="appyl-sub-icon-info">
+                    <h5><a href="blog-single.html">Nutrition</a></h5>
+                    <p>Lorem ipsum dolor sit amet,Ea a diam et dui elit, orci urna vel id neque. Donec
+                      sed enim.</p>
+                    <a href="#url" class="learn">Learn More <i class="fa fa-long-arrow-right ml-2"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="apply-gd-right offset-lg-1 col-lg-6 mt-lg-0 mt-5">
+            <div class="apply-form p-sm-5 p-4">
+              <h5>Any Queries Contact Us</h5>
+              <form action="#" method="post">
+                <div class="admission-form">
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Full Name*" required="">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Phone Number*" required="">
+                  </div>
+                  <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Email*" required="">
+                  </div>
+                  <select class="form-control">
+                    <option>About</option>
+                    <option>Services</option>
+                    <option>Quality</option>
+                    <option>Other</option>
+
+                  </select>
+                </div>
+                <div class="form-group">
+                  <textarea name="Comment" class="form-control" placeholder="Message*" required=""></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary submit">Submit Now</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- //apply-6-->
+  <section class="w3l-call-to-action_9 py-5">
+    <div class="call-w3">
+      <div class="container">
+        <div class=" main-cont-wthree-2">
+          <div class="left-contect-calls text-center">
+            <h3 class="title mb-sm-5 mb-4">Certificates & Standards</h3>
+            <div class="" >
+              <!-- <a href="#url" class="">
+                <img src="{{url_for('static',filename='images/logo1.png')}}" class="img-fluid" alt="">
+              </a>
+
+              <a href="#url" class="">
+                <img src="{{url_for('static',filename='images/logo2.png')}}" class="img-fluid" alt="">
+              </a>
+              <a href="#url" class="">
+                <img src="{{url_for('static',filename='images/logo3.png')}}" class="img-fluid" alt="">
+              </a>
+              <a href="#url" class="">
+                <img src="{{url_for('static',filename='images/logo4.png')}}" class="img-fluid" alt="">
+              </a>
+              <a href="#url" class="">
+                <img src="{{url_for('static',filename='images/logo5.png')}}" class="img-fluid" alt="">
+              </a> -->
+
+              <h1 style="color: blue;">Coming Soon....</h1>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- footer-28 block -->
+ {% include 'footer.html' %}
+
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+      &#10548;
+    </button>
+    <script>
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function () {
+        scrollFunction()
+      };
+
+      function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+          document.getElementById("movetop").style.display = "block";
+        } else {
+          document.getElementById("movetop").style.display = "none";
+        }
+      }
+
+      // When the user clicks on the button, scroll to the top of the document
+      function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
+    </script>
+    <!-- /move top -->
+
+    <script src="{{url_for('static',filename='js/jquery-3.3.1.min.js')}}"></script>
+
+    <script src="assets/js/green-audio-player.js"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        new GreenAudioPlayer('.ready-player-1', { stopOthersOnPlay: true });
+      });
+    </script>
+
+    <!-- video popup -->
+    <script>
+      $('#notify').change(function () {
+        if ($('#notify').is("Active")) {
+          $('body').css('overflow', 'hidden');
+        } else {
+          $('body').css('overflow', 'auto');
+        }
+      });
+    </script>
+    <!-- //video popup -->
+
+    <script src="{{url_for('static',filename='js/owl.carousel.js')}}"></script>
+    <!-- script for banner slider-->
+    <script>
+      $(document).ready(function () {
+        $('.owl-one').owlCarousel({
+          loop: true,
+          margin: 0,
+          nav: false,
+          responsiveClass: true,
+          autoplay: false,
+          autoplayTimeout: 5000,
+          autoplaySpeed: 1000,
+          autoplayHoverPause: false,
+          responsive: {
+            0: {
+              items: 1,
+              nav: false
+            },
+            480: {
+              items: 1,
+              nav: false
+            },
+            667: {
+              items: 1,
+              nav: true
+            },
+            1000: {
+              items: 1,
+              nav: true
+            }
+          }
+        })
+      })
+    </script>
+    <!-- //script -->
+
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+      $(function () {
+        $('.navbar-toggler').click(function () {
+          $('body').toggleClass('noscroll');
+        })
+      });
+    </script>
+    <!-- disable body scroll which navbar is in active -->
+
+    <script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+
+</body>
+
+</html>

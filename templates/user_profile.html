@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Health care</title>
+  <!-- User profile -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+    rel="stylesheet">
+  <!-- End user profile -->
+  <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+  <link rel="stylesheet" href="{{url_for('static',filename='css/style-starter.css')}}">
+  <link href="https://fonts.googleapis.com/css?family=Muli:400,600,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{url_for('static',filename='css/style1-starter.css')}}">
+  <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{url_for('static',filename='css/style12.css')}}">
+  <link rel="stylesheet" href="{{url_for('static',filename='css/profile.css')}}">
+</head>
+
+<body style="width:100%">
+  <!-- Navbar -->
+  {% include 'healthnavbar2.html' %}
+  <!-- End navbar -->
+
+
+  
+
+  <div class="container bootstrap snippets bootdey">
+    <div class="row">
+      <div class="profile-nav col-md-3">
+        <div class="panel">
+          <div class="user-heading round">
+            <div class="dropdown">
+              <img src="/static/uploads/{{profile.file_name}}" width="80%" style="border-radius: 100px">
+              <div class="dropdown-content">
+                <a href="{{url_for('upload_profile')}}" style="height:1px;">
+                  <h6 style="color:blue;">Upload a Photo</h6>
+                </a>
+
+                 <div class="desc">
+                </div>
+              </div>
+            </div>
+
+
+            <h1>{{profile['name']}}</h1>
+            <a style="color:white" href="{{('edit_user_profile')}}">Edit Profile</a>
+          </div><br>
+        </div>
+      </div>
+      <div class="profile-info col-md-9">
+        <div class="panel">
+          <div class="panel">
+            <div class="bio-graph-heading">
+              Hi, This my profile.
+            </div>
+            <div class="panel-body bio-graph-info">
+              <div class="row" style="width:100%">
+                <div class="bio-row">
+                  <h1>Name:</h1>
+                  <h1>{{profile['name']}}</h1>
+                </div>
+                <div class="bio-row">
+                  <h1>Email:</h1>
+                  <h1>{{profile['email']}}</h1>
+                </div>
+                <div class="bio-row">
+                  <h1>Mobile No:</h1>
+                  <h1>{{profile['mobile']}}</h1>
+                </div>
+                <div class="bio-row">
+                  <h1>Gender:</h1>
+                  <h1>{{profile['gender']}}</h1>
+                </div>
+                <div class="bio-row">
+                  <h1>State:</h1>
+                  <h1>{{profile['state']}}</h1>
+                </div>
+                <div class="bio-row">
+                  <h1>Address:</h1>
+                  <h1>{{profile['address']}} </h1>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="row">
+              <div class="col-md-6">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="{{url_for('static',filename='js/jquery-3.3.1.min.js')}}"></script>
+  <!-- script for banner slider-->
+  <script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+</body>
+
+</html>

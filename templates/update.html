@@ -1,0 +1,65 @@
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Health care</title>
+    
+    <link rel="stylesheet" href="{{url_for('static',filename='css/appointment.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/nav.css')}}">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+
+   </head>
+<body style="font-size: larger;">
+
+
+<!-- header section starts  -->
+<header class="header" >
+
+  <!-- <a href="#" class="logo" > <i class="fas fa-heartbeat" style='color:red;' ></i> healthcare. </a> -->
+
+  <nav class="navbar">
+      <a href="{{url_for('admin_dashboard')}}" style="font-size: larger;color: blue;">Dashboard</a>
+  </nav>
+
+  <div id="menu-btn" class="fas fa-bars"></div>
+
+</header>
+
+<!-- header section ends -->
+
+  <div class="wrapper" style="margin-top: 100px;">
+    <h2>Update Availability Status</h2>
+    <form action="" method="post">
+      <div class="fields-grid">
+        <div class="styled-input">
+
+        <div class="styled-input">
+
+          <div class="appointment-form-field">
+
+            <select  name="status" required="" style="width: 80%;height:40px;border: 2px solid blue;border-radius: 10px;font-size: large;">
+              <option >Status*</option>
+              <option >Available</option>
+              <option >Unavailable</option>
+            </select>
+          </div>
+        </div>
+       
+
+      </div>
+      <div class="appointment-btn text-lg-right">
+        <button type="submit" style="background-color: blue;color: white;" class="btn btn-style btn-primary mt-4">Update</button>
+      </div>
+    </form>
+  </div>
+
+<script src="{{url_for('static',filename='js/nav.js')}}"></script>
+
+</body>
+</html>
