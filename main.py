@@ -26,7 +26,7 @@ app.config.update(
 )
 mail = Mail(app)
 otp = randint(000000, 999999)
-if(local_server):
+if local_server:
     app.config['SQLALCHEMY_DATABASE_URI'] = params['local_uri']
 else:
     app.config['SQLALCHEMY_DATABASE_URI'] = params['prod_uri']
